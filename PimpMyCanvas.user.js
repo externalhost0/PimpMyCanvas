@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
 // @author       External Host
@@ -20,6 +20,7 @@
 
 (function() {
     'use strict';
+    // test
     GM_addStyle(GM_getResourceText('PICKERCSS'))
 
 
