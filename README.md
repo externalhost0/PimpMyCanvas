@@ -1,7 +1,7 @@
 # Pimp My Canvas
 <!-- ![](https://img.shields.io/badge/Made%20with-HTML/CSS/JS-orange.svg?style=flat-square) ![](https://img.shields.io/github/repo-size/ExternalHost0/Personal-Portfolio-v2?color=orange&style=flat-square) ![](https://img.shields.io/github/last-commit/ExternalHost0/Personal-Portfolio-v2?color=orange&style=flat-square) -->
 
-Customize the appearance of Canvas LMS (Learning Management System) with ease. PMC (Pimp My Canvas) allows for custom colors to be assigned, overwriting the elements of Canvas aswell as the ability to import palletes to be used in themes.
+Customize the appearance of Canvas LMS (Learning Management System) with ease. PMC (Pimp My Canvas) allows for custom colors to be assigned, overwriting the elements of Canvas as well as the ability to import palletes to be used in themes.
 ___
 ## Requires Tampermonkey to be installed in your browser.
 1. Select the browser you use to access Canvas from the options on the top.

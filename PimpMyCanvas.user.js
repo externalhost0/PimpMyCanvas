@@ -40,7 +40,6 @@
         iconColor: "#ffffff",
         slimborderfixColor: "#c7cdd1",
     }
-
     
     let colors = GM_getValue('colors', defaultColors)
     //color pallettes from https://coolors.co/
