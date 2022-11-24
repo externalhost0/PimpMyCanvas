@@ -3,10 +3,11 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
-// @description  Changes the UI of Canvas to what you like.
+// @description  Changes the color of Canvas LMS
 // @author       External Host
 // @match        https://*.instructure.com/*
-// @icon         https://postimg.cc/QKs6Sfzp
+// @icon         https://i.postimg.cc/7hJpHcMQ/canvas2.png
+// @supportURL   https://github.com/ExternalHost0/PimpMyCanvas/issues
 // @resource     PICKERCSS https://raw.githack.com/bgrins/spectrum/master/spectrum.css
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      https://raw.githack.com/bgrins/spectrum/master/spectrum.js
