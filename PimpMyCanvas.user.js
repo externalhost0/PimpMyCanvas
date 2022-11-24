@@ -2,20 +2,18 @@
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
 // @version      0.1
+// @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the UI of Canvas to what you like.
-// @author       Hayden R
+// @author       External Host
 // @match        https://*.instructure.com/*
-// @icon         https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Color_circle_%28hue-sat%29.png/310px-Color_circle_%28hue-sat%29.png
+// @icon         https://postimg.cc/QKs6Sfzp
 // @resource     PICKERCSS https://raw.githack.com/bgrins/spectrum/master/spectrum.css
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      https://raw.githack.com/bgrins/spectrum/master/spectrum.js
-// @require      file:///C:/Users/hayde/OneDrive/Desktop/Important/PMC/PimpMyCanvas.user.js
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @grant        GM_getValue
 // @grant        GM_setValue
-// @grant        GM_deleteValue
-// @grant        GM_listValues
 // ==/UserScript==
 
 
