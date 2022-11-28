@@ -65,6 +65,8 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --eqmZq-selectedBackground: var(--secondarybackgroundColor) !important;
+        --qBMHb-focusOutlineColor: var(--minorsideColor) !important;
         --MlJlv-toggleFocusBorderColor: var(--minorsideColor) !important;
         --fdyuz-background: var(--tertiarybackgroundColor) !important;
         --eHzxc-background: var(--secondarybackgroundColor) !important;
@@ -148,8 +150,11 @@
         background: 0;
     }
     #calendar-app .fc-month-view .fc-today, #calendar-drag-and-drop-container .fc-month-view .fc-today, .item-group-condensed .ig-header, #questions.assessment_results .question .header, .conversations .panel, .question .header, .ic-notification__icon, .ic-Action-header .ic-Action-header__Secondary>.Button, .ic-Action-header .ic-Action-header__Secondary>.btn, .ic-Action-header .ic-Action-header__Secondary>.ui-button{
-        background: var(--secondarybackgroundColor);
+        background: var(--secondarybackgroundColor) !important;
         transition: ease-in-out 300ms;
+    }
+    .group_user_8655, .group_user_8655:hover, .group_user_8655:focus {
+        background-color: var(--hoverColor) !important;
     }
     #minical .fc-widget-content {
         border: 1px solid transparent;
