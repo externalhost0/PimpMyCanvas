@@ -17,7 +17,7 @@ ___
 1. Select the browser you use to access Canvas from the options on the top.
 2. Select "Download" for Tampermonkey, **NOT** Tampermonkey Beta.
 3. Finish installing the extension on the new page.
-### [Tampermonkey Install Here](https://www.tampermonkey.net/*)
+### [Tampermonkey Install Here](https://www.tampermonkey.net/)
 
 If you have any trouble with installation, refer to the video below.
 
