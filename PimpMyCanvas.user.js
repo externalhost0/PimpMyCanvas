@@ -460,7 +460,7 @@
          // https://stackoverflow.com/questions/52357239/how-to-overwrite-javascript-object-values-using-object
 
       if ($('#pmcdiv').length) {
-          // old version kept incase -> GM_setValue("colors", Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector").spectrum("get").toHexString()})); // Spectrum is crap btw
+          // old version kept incase -> GM_setValue("colors", Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector").spectrum("get").toHexString()})); // Spectrum is total crap btw
           // you cant have multiple setvalues, watch as you can make background color work perfectly but uncommenting the sideColor will have only side color function properly
 
           colors = Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector")[0].value});
