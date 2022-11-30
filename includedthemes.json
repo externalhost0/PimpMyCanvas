@@ -1,6 +1,7 @@
-{
-    "theme1": {
-    "colors": {
+[
+    {
+      "name": "purple",
+      "colors": {
         "backgroundColor": "#faabd7",
         "sideColor": "#d81b60",
         "sideColorGradient": "linear-gradient(0deg, #fee024, #e0eee6, #e5ee4e)",
@@ -15,12 +16,12 @@
         "hoverColor": "#fa9aee",
         "iconColor": "#ffffff",
         "slimborderfixColor": "#c7cdd1"
-    
-        }
-        
+      }
     },
-    "theme2": {
-    "colors": {
+  
+    {
+      "name": "blue",
+      "colors": {
         "backgroundColor": "#11108f",
         "sideColor": "#d81b60",
         "sideColorGradient": "linear-gradient(0deg, #fee024, #e0eee6, #e5ee4e)",
@@ -35,7 +36,6 @@
         "hoverColor": "#fa9aee",
         "iconColor": "#ffffff",
         "slimborderfixColor": "#c7cdd1"
-        
-        }
+      }
     }
-}
+]
