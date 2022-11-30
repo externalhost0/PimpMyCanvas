@@ -23,7 +23,7 @@
     {
         "theme": 2,
         "colors": {
-            "backgroundColor": "#faabd7",
+            "backgroundColor": "#111bd7",
             "sideColor": "#d81b60",
             "sideColorGradient": "linear-gradient(0deg, #fee024, #e0eee6, #e5ee4e)",
             "minorsideColor": "#e438e9",
