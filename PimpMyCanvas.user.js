@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.2.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -20,7 +20,7 @@
 (function() {
     'use strict';
     GM_addStyle(GM_getResourceText('PICKERCSS'))
-
+    // test
     const defaultColors = {
         backgroundColor: "#faebd7",
         sideColor: "#ff6536",
@@ -527,14 +527,14 @@
                     console.log()
                 }
             });
-            $(document).click(function(event) {
-                var text = $(event.target).text();
-                for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
+            // $(document).click(function(event) {
+            //     var text = $(event.target).text();
+            //     for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
                     
-                    console.log(text.colors[c])
-                    colors[c] = text.colors[c]
-                }
-            });
+            //         console.log(text.colors[c])
+            //         colors[c] = text.colors[c]
+            //     }
+            // });
         });
 
         for (let i=0; i<8; i++) {
