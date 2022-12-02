@@ -417,7 +417,6 @@
         $("#dialog").dialog("open");
     });
      // Most elements remove their background entirely, so changing the document background reduces the amount of changes needed.
-//div([role="dialog"][aria-label="Profile tray"])
     // Checks every 500ms if tray is opened
     setInterval(() => {
         if ($('.navigation-tray-container.profile-tray .tray-with-space-for-global-nav > div').length) {
@@ -510,7 +509,8 @@
         });
         $('<div class="containerTheme">').appendTo('#dialog');
 
-        $.getJSON( "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/master/includedthemes.json", function(data) {
+        $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
+            //page setup
             for (const theme of data) {
                 let singleTheme = $('<div class="singleTheme">').appendTo(".containerTheme");
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
@@ -521,16 +521,27 @@
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
                 }
             }
+            //onClick any theme
+            $("#dialog").on("click", ".singleTheme", () => {
+                for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
+                    console.log()
+                }
+            });
+            $(document).click(function(event) {
+                var text = $(event.target).text();
+                for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
+                    
+                    console.log(text.colors[c])
+                    colors[c] = text.colors[c]
+                }
+            });
         });
 
         for (let i=0; i<8; i++) {
             $('<div class="colorsforTheme" id="c' + i +'">').appendTo(".colorTiles");
         }
-        //$("<h4>Justin's Theme</h4>").appendTo(".singleTheme");
 
-        $("#dialog").on("click", ".singleTheme", () => {
-            alert("lol")
-        });
+
 
     });
 
