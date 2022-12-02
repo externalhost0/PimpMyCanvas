@@ -1,22 +1,21 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.1.2
+// @version      0.2.0
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
+// @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
 // @author       External Host
 // @match        https://*.instructure.com/*
 // @icon         https://i.postimg.cc/7hJpHcMQ/canvas2.png
 // @supportURL   https://github.com/ExternalHost0/PimpMyCanvas/issues
-// @resource     PICKERCSS https://raw.githack.com/bgrins/spectrum/master/spectrum.css
 // @require      http://code.jquery.com/jquery-latest.js
-// @require      https://raw.githack.com/bgrins/spectrum/master/spectrum.js
+// @require      https://code.jquery.com/ui/1.13.2/jquery-ui.min.js
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @grant        GM_getValue
 // @grant        GM_setValue
 // ==/UserScript==
-
 
 (function() {
     'use strict';
@@ -41,18 +40,19 @@
     
     let colors = GM_getValue('colors', defaultColors)
 
+
     if (GM_getValue("sT", "Switch to Gradient") == "Switch to Gradient") {
         document.documentElement.style.setProperty('--sideColor', colors.sideColor);
-    } else {
+    }
+    if (GM_getValue("sT", "Switch to Gradient") == "Switch to Static Color") {
         document.documentElement.style.setProperty('--sideColor', colors.sideColorGradient);
     }
 
     GM_addStyle(/*css*/`
-    /* I change like sixty global variables */
+    /* I change like sixty eight global variables */
     :root{
         --backgroundColor: ${colors.backgroundColor};
         --sideColor: ${colors.sideColor};
-        /*--sideColorGradient: ${colors.sideColorGradient}; not needed, as we are replacing --sideColor */ 
         --minorsideColor: ${colors.minorsideColor}; 
         --newNotifColor: ${colors.newNotifColor}; 
         --dangerColor: ${colors.dangerColor};
@@ -65,7 +65,22 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
-        --eqmZq-selectedBackground: var(--secondarybackgroundColor) !important;
+        --deLCD-meterColorBrand: var(--minorsideColor) !important;
+        --dNoYT-background: var(--backgroundColor) !important;
+        --ic-link-color-lightened-10: 0 !important;
+        --dyzZI-canvasBackgroundColor: 0 !important;
+        --fQfxa-primaryGhostColor: var(--minorsideColor) !important;
+        --dyzZI-canvasFocusBorderColor: var(--minorsideColor) !important;
+        --wIZqC-trackColor: var(--backgroundColor) !important;
+        --Spinner-inverseColor: var(--minorsideColor) !important;
+        --Spinner-color: var(--minorsideColor) !important;
+        --fQfxa-primaryInverseColor: var(--minortextColor) !important;
+        --fbyHH-focusOutlineColor: var(--minorsideColor) !important;
+        --sJGfW-background: var(--backgroundColor) !important;
+        --eoNrR-background: var(--backgroundColor) !important;
+        --yyQPt-focusBorderColor: var(--minorsideColor) !important;
+        --ic-brand-global-nav-bgd: var(--minorsideColor) !important;
+        --eqmZq-selectedBackground: var(--minorsideColor) !important;
         --qBMHb-focusOutlineColor: var(--minorsideColor) !important;
         --MlJlv-toggleFocusBorderColor: var(--minorsideColor) !important;
         --fdyuz-background: var(--tertiarybackgroundColor) !important;
@@ -96,7 +111,7 @@
         --sJGfW-activeLabelColor: var(--buttonbackColor) !important;
         --sJGfW-activeIconColor: var(--buttonbackColor) !important;
         --dUOHu-brandColor: var(--minortextColor) !important; /* honestly no idea but the submit page on assignments is all weird cause of it for several stuff */
-        --ic-brand-primary: var(--sideColor); /* hover on grades page */
+        --ic-brand-primary: var(--minorsideColor); /* hover on grades page */
         --ic-brand-global-nav-menu-item__badge-text: var(--iconColor);
         --ic-brand-global-nav-ic-icon-svg-fill: var(--iconColor);
         --ic-brand-global-nav-menu-item__text-color: var(--iconColor);
@@ -130,7 +145,13 @@
         transition: ease-in-out 300ms;
         background: var(--backgroundColor)
     }
+    .Button.Button--primary:hover {
+        background: var(--hoverColor) !important;
+    }
 
+    .ui-dialog .ui-dialog-titlebar.ui-widget-header{
+        background: var(--backgroundColor) !important;
+    }
     .ic-app-header { /* SIDEBAR */
         animation: gradient 10s ease infinite;
         background: var(--sideColor);
@@ -141,6 +162,15 @@
         background: var(--backgroundColor);
         transition: ease-in-out 300ms;
     }
+    .ic-app-header__menu-list-item.ic-app-header__menu-list-item--active .ic-app-header__menu-list-link {
+        background: var(--backgroundColor);
+    }
+    .ic-DashboardCard__action-badge {
+        background-size: 300% 300%;
+    }
+    .ic-Dashboard-header__layout {
+        background: var(--backgroundColor);
+    }
     .large.ic-Dashboard-header__layout, .react-rubric td, .react-rubric th {
         background: var(--backgroundColor);
         opacity: 0.95;
@@ -150,10 +180,10 @@
         background: 0;
     }
     #calendar-app .fc-month-view .fc-today, #calendar-drag-and-drop-container .fc-month-view .fc-today, .item-group-condensed .ig-header, #questions.assessment_results .question .header, .conversations .panel, .question .header, .ic-notification__icon, .ic-Action-header .ic-Action-header__Secondary>.Button, .ic-Action-header .ic-Action-header__Secondary>.btn, .ic-Action-header .ic-Action-header__Secondary>.ui-button{
-        background: var(--secondarybackgroundColor) !important;
+        background: var(--secondarybackgroundColor);
         transition: ease-in-out 300ms;
     }
-    .group_user_8655, .group_user_8655:hover, .group_user_8655:focus {
+    .group_user_8655, .group_user_8655:hover, .group_user_8655:focus, .ui-button:hover {
         background-color: var(--hoverColor) !important;
     }
     #minical .fc-widget-content {
@@ -163,7 +193,7 @@
         background: var(--backgroundColor) !important;
         transition: ease-in-out 300ms;
     }
-    .btn, .ui-button, #right-side .button-sidebar-wide, select {
+    .ui-button, #right-side .button-sidebar-wide, select {
         background: var(--buttonbackColor);
         transition: ease-in-out 300ms;
     }
@@ -174,6 +204,13 @@
         background: var(--hoverColor);
         transition: ease-in-out 300ms;
     }
+    .btn.active:hover, .btn:hover {
+        background: var(--hoverColor) !important;
+        transition: ease-in-out 300ms;
+    }
+    .btn, .fOyUs_bGBk.fOyUs_desw.bDzpk_bGBk.bDzpk_busO.bDzpk_cQFX.bDzpk_bZNM .fOyUs_bGBk.fOyUs_fKlg.dJCgj_bGBk .fOyUs_bGBk, .fOyUs_bGBk .fOyUs_bGBk.fOyUs_desw.bDzpk_bGBk.bDzpk_busO.bDzpk_cQFX.bDzpk_bZNM .fOyUs_bGBk.fOyUs_fKlg.dJCgj_bGBk, .fOyUs_bGBk.eIQkd_bGBk .fwfoD_bGBk.fwfoD_fsuY.fwfoD_EMjX {
+        background: var(--tertiarybackgroundColor);
+    }
     .fOyUs_fKyb { /* immersive reader button */
         background: var(--backgroundColor);
         transition: ease-in-out 300ms;
@@ -182,7 +219,7 @@
         background: var(--hoverColor);
         transition: ease-in-out 300ms;
     }
-    .item-group-condensed .ig-row, .question .text {
+    .item-group-condensed .ig-row, .question .text, .ic-DashboardCard, .ic-DashboardCard__header_content {
         background: var(--tertiarybackgroundColor);
     }
     .ig-list .ig-row:hover, .btn-primary {
@@ -195,19 +232,34 @@
     .menu-item__badge, .nav-badge {
         background: var(--newNotifColor) !important;
     }
-    .fQfxa_caGd.fQfxa_ImeN, [dir="ltr"] .fQfxa_caGd.fQfxa_ImeN, [dir="rtl"] .fQfxa_caGd.fQfxa_ImeN {
-        background: var(--secondarybackgroundColor);
-        border-color: var(--sideColor);
+    .tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
+        background: var(--tertiarybackgroundColor) !important;
+    } 
+    .fQfxa_caGd.fQfxa_ImeN, [dir="ltr"] .fQfxa_caGd.fQfxa_ImeN{
+        background: var(--hoverColor);
+        border-color: var(--minorsideColor);
     }
-    .XOwIb_ddES[aria-selected]::after {
-        background: var(--hoverColor) !important;
+    .fQfxa_dqAF.fQfxa_eCSh {
+        background: var(--minorsideColor) !important;
+    }
+    .fQfxa_dqAF.fQfxa_buuG{
+        background: var(--secondarybackgroundColor) !important;
+    }
+    .XOwIb_ddES[aria-selected]::after, .Button--primary {
+        background: var(--minorsideColor) !important;
     }
     .quiz-submission, .question_editing {
         background: 0;
         border: 0;
     }
-    .ViewerControls, .AnnotationControlButton, .Button--primary {
+    .ViewerControls, .AnnotationControlButton, .btn-primary:hover, .Button--primary:hover, .btn.active {
         background: var(--minorsideColor) !important;
+    }
+    .take_quiz_button .btn {
+        background: var(--hoverColor);
+    }
+    #tinymce {
+        background: white;
     }
     .AnnotationControlButton-outer {
         border: 0;
@@ -229,15 +281,9 @@
     
     /* sidebar gradient background animation */
     @keyframes gradient {
-	    0% {
-		    background-position: 0% 0%;
-	    }
-	    50% {
-		    background-position: 100% 100%;
-	    }
-	    100% {
-		    background-position: 0% 0%;
-	    }
+	    0% {background-position: 0% 0%;}
+	    50% {background-position: 100% 100%;}
+	    100% {background-position: 0% 0%;}
     }
 
     #pmcdiv {
@@ -253,14 +299,21 @@
         top: 0px;
     }
     #pmcspan {
+        margin-top: 8px;
         --faJyW-background: #2D3B45;
         --faJyW-borderColor: #2D3B45;
         --faJyW-checkedBackground: #127A1B;
         --faJyW-checkedIconColor: #127A1B;
-        --faJyW-focusOutlineColor: #0770A3;
+        --faJyW-focusOutlineColor: 0 !important;
     }
     .pmcControls {
-        margin: 15px 0;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .pmcSettingsInput {
+        margin-bottom: 10px;
     }
 
     #pmcControlText {
@@ -269,17 +322,19 @@
         margin: 5px 0;
         line-height: 1.5;
         font-family: var(--fOyUs-fontFamily);
-        display: inline;
     }
     .ColorSelector{
-        float: right;
         width: 50px;
-        height: 25px;
-        display: inline;
+        height: 30px !important;
+        padding: 0px 2px !important;
+        margin-bottom: 0 !important;
+        transition: 150ms ease-in-out !important;
+    }
+    .ColorSelector:hover {
+        background: #EDEDED;
     }
     .sp-replacer{
         float: right;
-        transform: translateY(-6px);
     }
     #pmcGradientSwitch {
         height: 33px;
@@ -306,136 +361,190 @@
         color: var(--iconColor);
     }
     #customGradientdiv {
-        align-content: center;
+        display: flex;
+        align-items: stretch;
     }
     #customGradient {
         margin-bottom: 0;
     }
     #customGradButton {
-        margin: 8px;
+        margin-left: 8px;
     }
 
+    /* Both are used for the modal background darken*/
+    .ui-dialog.ui-widget-content {
+        z-index: 9999;
+    }
+    .ui-widget-overlay.modal-opened{
+        background: rgb(0, 0, 0);
+        opacity: 0.5;
+        filter: Alpha(Opacity=50); 
+        position: fixed;
+    }
+    .containerTheme {
+        margin: 0;
+        display: grid;
+        grid-gap: 10px 15px;
+
+        grid-template-columns: 2fr 2fr 2fr 2fr;
+        grid-template-rows: 14rem 14rem 14rem;
+    }
+    .singleTheme {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
+        margin: 0;
+        background: #F6F6F6;
+    }
+    .singleTheme:hover {
+        cursor: pointer;
+    }
+    .colorsForTheme {
+        width: 2rem;
+        height: 2em;
+        margin: 0;
+        justify-content: center;
+        display: table-cell;
+        background: orange;
+    }
 
     `)
-     // Most elements remove their background entirely, so changing the document background reduces the amount of changes needed.
 
+    //is clicked for theming button
+    $("body").on("click", "#themeButton", () => {
+        $("#dialog").dialog("open");
+    });
+     // Most elements remove their background entirely, so changing the document background reduces the amount of changes needed.
+//div([role="dialog"][aria-label="Profile tray"])
     // Checks every 500ms if tray is opened
     setInterval(() => {
-        if ($('.tray-with-space-for-global-nav > div').length) {
+        if ($('.navigation-tray-container.profile-tray .tray-with-space-for-global-nav > div').length) {
             if (!$('.tray-with-space-for-global-nav #pmcdiv').length) {
                 // PMC Show Button
                 $('<div id="pmcdiv"/>').appendTo('.tray-with-space-for-global-nav > div');
                 $('<div id="pmcControldiv"/>').appendTo('.tray-with-space-for-global-nav > div');
-                $('<input id="pmcinput" type="checkbox" class="epRMX_cwos" value >').appendTo('#pmcdiv');
+                $('<input id="pmcinput" type="checkbox" class="epRMX_cwos" value>').appendTo('#pmcdiv');
                 $('<span class="faJyW_bGBk" id="pmcspan">').appendTo('#pmcdiv');
-                $('<span id="pmccheck" class="faJyW_cSXm faJyW_bYta faJyW_doqw" aria-hidden="true"><span class="faJyW_dnnz"><span class="faJyW_cMpH"><svg name="IconX" viewBox="0 0 1920 1920" rotate="0" width="1em" height="1em" aria-hidden="true" role="presentation" focusable="false" class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk faJyW_eoCh" style="width: 1em; height: 1em;"><g role="presentation"><path class="innerappend" d="M797.319865 985.881673L344.771525 1438.43001 533.333333 1626.99182 985.881673 1174.44348 1438.43001 1626.99182 1626.99182 1438.43001 1174.44348 985.881673 1626.99182 533.333333 1438.43001 344.771525 985.881673 797.319865 533.333333 344.771525 344.771525 533.333333z" fill-rule="nonzero" stroke="none" stroke-width="1"></path></g></svg></span></span></span>').appendTo('#pmcspan');
+                $('<span id="pmccheck" class="faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw" aria-hidden="true"><span class="faJyW_dnnz"><span class="faJyW_cMpH"><svg name="IconX" viewBox="0 0 1920 1920" rotate="0" width="1em" height="1em" aria-hidden="true" role="presentation" focusable="false" class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk faJyW_eoCh" style="width: 1em; height: 1em;"><g role="presentation"><path class="innerappend" d="M1743.8579 267.012456L710.746654 1300.1237 176.005086 765.382131 0 941.387217 710.746654 1652.25843 1919.98754 443.142104z" fill-rule="nonzero" stroke="none" stroke-width="1"></path></g></svg></span></span></span>').appendTo('#pmcspan');
                 $('<span id="pmctext">Show PMC Menu</span>').appendTo('#pmcspan');
 
                 $('<hr>').appendTo('#pmcControldiv');
                 // PMC Controls
                 $('<div id="pmcControlBackgroundColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Background Color</span>').appendTo('#pmcControlBackgroundColor');
-                $('<input id="backgroundColorSelector" class="ColorSelector"/>').appendTo('#pmcControlBackgroundColor');
-                $('#backgroundColorSelector').spectrum({
-                    color: colors.backgroundColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.backgroundColor}" id="backgroundColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlBackgroundColor');
 
                 $('<div id="pmcControlSidebarColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Sidebar Color</span>').appendTo('#pmcControlSidebarColor');
-                $('<input id="sideColorSelector" class="ColorSelector"/>').appendTo('#pmcControlSidebarColor');
-                $('#sideColorSelector').spectrum({
-                    color: colors.sideColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value=${colors.sideColor} id="sideColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlSidebarColor');
 
                 $('<div id="pmcControlMinorSideColor" class="pmcControls"/>').appendTo('#pmcControldiv');
-                $('<span id="pmcControlText">Accent Side Color</span>').appendTo('#pmcControlMinorSideColor');
-                $('<input id="minorsideColorSelector" class="ColorSelector"/>').appendTo('#pmcControlMinorSideColor');
-                $('#minorsideColorSelector').spectrum({
-                    color: colors.minorsideColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $('<span id="pmcControlText">Major Color</span>').appendTo('#pmcControlMinorSideColor');
+                $(`<input type="color" value="${colors.minorsideColor}" id="minorsideColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlMinorSideColor');
 
                 $('<div id="pmcControlTextColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Text Color</span>').appendTo('#pmcControlTextColor');
-                $('<input id="textColorSelector" class="ColorSelector"/>').appendTo('#pmcControlTextColor');
-                $('#textColorSelector').spectrum({
-                    color: colors.textColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.textColor}" id="textColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlTextColor');
 
                 $('<div id="pmcControlAccentTextColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Accent Text Color</span>').appendTo('#pmcControlAccentTextColor');
-                $('<input id="accenttextColorSelector" class="ColorSelector"/>').appendTo('#pmcControlAccentTextColor');
-                $('#accenttextColorSelector').spectrum({
-                    color: colors.minortextColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.minortextColor}" id="accenttextColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlAccentTextColor');
 
                 $('<div id="pmcControlIconColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Icon Color</span>').appendTo('#pmcControlIconColor');
-                $('<input id="iconColorSelector" class="ColorSelector"/>').appendTo('#pmcControlIconColor');
-                $('#iconColorSelector').spectrum({
-                    color: colors.iconColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.iconColor}" id="iconColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlIconColor');
 
                 $('<div id="pmcControlSecondaryColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Secondary Color</span>').appendTo('#pmcControlSecondaryColor');
-                $('<input id="secondarybgColorSelector" class="ColorSelector"/>').appendTo('#pmcControlSecondaryColor');
-                $('#secondarybgColorSelector').spectrum({
-                    color: colors.secondarybackgroundColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.secondarybackgroundColor}" id="secondarybgColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlSecondaryColor');
 
                 $('<div id="pmcControlTertiaryColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Tertiary Color</span>').appendTo('#pmcControlTertiaryColor');
-                $('<input id="tertiarybgColorSelector" class="ColorSelector"/>').appendTo('#pmcControlTertiaryColor');
-                $('#tertiarybgColorSelector').spectrum({
-                    color: colors.tertiarybackgroundColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.tertiarybackgroundColor}" id="tertiarybgColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlTertiaryColor');
 
                 $('<div id="pmcControlHoverColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Hover Color</span>').appendTo('#pmcControlHoverColor');
-                $('<input id="hoverColorSelector" class="ColorSelector"/>').appendTo('#pmcControlHoverColor');
-                $('#hoverColorSelector').spectrum({
-                    color: colors.hoverColor,
-                    preferredFormat: "hex",
-                    showInput: true,
-                    showInitial: true,
-                });
+                $(`<input type="color" value="${colors.hoverColor}" id="hoverColorSelector" class="ColorSelector"/>`).appendTo('#pmcControlHoverColor');
 
-                $('<button id="pmcGradientSwitch" class="pmcControls"></button><br>').appendTo('#pmcControldiv');
+                $('<hr>').appendTo('#pmcControldiv');
+
+                $('<button id="pmcGradientSwitch" class="pmcSettingsInput"></button><br>').appendTo('#pmcControldiv');
                 $('<span id="pmcGradientText"></span>').appendTo('#pmcGradientSwitch');
                 $("#pmcGradientText").text(GM_getValue("sT", "Switch to Gradient"));
-                $('<div id="customGradientdiv"/>').appendTo('#pmcControldiv');
-                $('<input type="text" placeholder="URL from Coolor" autocomplete="off" id="customGradient"/>').appendTo('#customGradientdiv');
+                $('<a href="https://coolors.co/palettes/trending" target="_blank" id="">Click here to go to coolors.co!<a>').appendTo('#pmcControldiv');
+                $('<div id="customGradientdiv" class="pmcSettingsInput"/>').appendTo('#pmcControldiv');
+                $('<input type="text" placeholder="URL from coolors.co" autocomplete="off" id="customGradient"/>').appendTo('#customGradientdiv');
                 $('<button id="customGradButton">Submit</button>').appendTo('#customGradientdiv');
-                
-                $('<button id="pmcResetButton" class="pmcControls">Reset to Default</button>').appendTo('#pmcControldiv');
-                $("#pmcControldiv").hide();
 
+                $('<button id="themeButton">Theme Library</button>').appendTo('#pmcControldiv');
+                $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');
+                $('<button id="pmcResetButton" class="">Reset to Default</button>').appendTo('#pmcControldiv');
+                
             }
         }
     }, 500);
+
+    $(document).ready(() => {
+        $('<div id="dialog">').appendTo('body');
+
+        $("#dialog").dialog({
+            draggable: false,
+            resizable: false,
+            width: 1200,
+            height: 790,
+            autoOpen: false,
+            modal: true,
+            title: "Theme Library",
+            open: function (event, ui) {
+                $(".ui-widget-overlay").addClass('modal-opened');
+                $('body').css('overflow', 'hidden');
+
+            },
+            close: function(event, ui){
+                $(".ui-widget-overlay").removeClass('modal-opened');
+                $('body').css('overflow', 'auto');
+
+            }
+        });
+        $('<div class="containerTheme">').appendTo('#dialog');
+
+        $.getJSON( "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/master/includedthemes.json", function(data) {
+            for (const theme of data) {
+                let singleTheme = $('<div class="singleTheme">').appendTo(".containerTheme");
+                let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
+                //$(`<img>${theme.}<img>`).appendTo(singleTheme)
+                $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
+
+                for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
+                    $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
+                }
+            }
+        });
+
+        for (let i=0; i<8; i++) {
+            $('<div class="colorsforTheme" id="c' + i +'">').appendTo(".colorTiles");
+        }
+        //$("<h4>Justin's Theme</h4>").appendTo(".singleTheme");
+
+        $("#dialog").on("click", ".singleTheme", () => {
+            alert("lol")
+        });
+
+    });
+
+    $("body").on("click", "#pmcExportButton", () => {
+        download(JSON.stringify(colors), "userColors.json", "text/plain")
+    });
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        var file = new Blob([content], { type: contentType });
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+    }
+    
 
     // submit button for custom gradient
     $("body").on("click", "#customGradButton", () => {
@@ -449,30 +558,30 @@
         } else {
             alert("Please submit a pallete url from coolors.co. No other urls are accepted.")
         }
-
     });
 
-    let isClicked = GM_getValue("isClicked", false);
+    let isClickedGrad = GM_getValue("isClickedGrad", false);
     let sT = GM_getValue("sT", "it doesnt matter what i put here"); // sT needs to be defined somewhere so here works
     $("body").on("click", "#pmcGradientText", () => {
-        if (!isClicked){
+        if (!isClickedGrad){
             sT = "Switch to Static Color"
             $("#pmcGradientText").text(sT);
-            isClicked = true;
+            isClickedGrad = true;
         } else {
             sT = "Switch to Gradient"
             $("#pmcGradientText").text(sT);
-            isClicked = false;
+            isClickedGrad = false;
         }
-        GM_setValue("isClicked", isClicked)
+        GM_setValue("isClickedGrad", isClickedGrad)
         GM_setValue("sT", sT)
     });
 
 
-    let isHidden = true //sets isHidden true as menu is always off when tray opened
+    let isHidden = false //sets isHidden true as menu is always off when tray opened
     // On click of menu, PMC opens
     // function is for button animation
     $("body").on("click", "#pmccheck", () => {
+        console.log(isHidden)
         if (isHidden){
             isHidden = false
             $("#pmccheck").attr('class', 'faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw');
@@ -490,50 +599,42 @@
 
     // reset button to default colors
     $("body").on("click", "#pmcResetButton", () => {
-        $("#backgroundColorSelector").spectrum("set", defaultColors.backgroundColor);
+        $("#backgroundColorSelector")[0].value = defaultColors.backgroundColor;
         colors.sideColorGradient = defaultColors.sideColorGradient
-        $("#sideColorSelector").spectrum("set", defaultColors.sideColor);
-        $("#minorsideColorSelector").spectrum("set", defaultColors.minorsideColor);
-        $("#textColorSelector").spectrum("set", defaultColors.textColor);
-        $("#accenttextColorSelector").spectrum("set", defaultColors.minortextColor);
-        $("#iconColorSelector").spectrum("set", defaultColors.iconColor);
-        $("#secondarybgColorSelector").spectrum("set", defaultColors.secondarybackgroundColor);
-        $("#tertiarybgColorSelector").spectrum("set", defaultColors.tertiarybackgroundColor);
-        $("#hoverColorSelector").spectrum("set", defaultColors.hoverColor);
+        $("#sideColorSelector")[0].value = defaultColors.sideColor;
+        $("#minorsideColorSelector")[0].value = defaultColors.minorsideColor;
+        $("#textColorSelector")[0].value = defaultColors.textColor;
+        $("#accenttextColorSelector")[0].value = defaultColors.minortextColor;
+        $("#iconColorSelector")[0].value = defaultColors.iconColor;
+        $("#secondarybgColorSelector")[0].value = defaultColors.secondarybackgroundColor;
+        $("#tertiarybgColorSelector")[0].value = defaultColors.tertiarybackgroundColor;
+        $("#hoverColorSelector")[0].value = defaultColors.hoverColor;
 
 
     });
 
     setInterval(() => {
-        // TODO: every 1000ms, get the colors value from storage and update all the css variables (doesnt seem to work rn)
-        // TODO: get the initial colors to work as if you just installed the script, it probably has to do with the 2nd in Object.assign below
-           // btw all object.assign does is it overwrites existing properties on an object with new ones but keeps all the old properties that havn't been changed
-           // https://stackoverflow.com/questions/52357239/how-to-overwrite-javascript-object-values-using-object
-
         if ($('#pmcdiv').length) {
-            // old version kept incase -> GM_setValue("colors", Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector").spectrum("get").toHexString()}));
-            // you cant have multiple setvalues, watch as you can make background color work perfectly but uncommenting the sideColor will have only side color function properly
 
-            colors = Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {sideColor: $("#sideColorSelector").spectrum("get").toHexString()});
+            colors = Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector")[0].value});
+            colors = Object.assign({}, colors, {sideColor: $("#sideColorSelector")[0].value});
             colors = Object.assign({}, colors, {sideColorGradient: GM_getValue('sideColorGradient', colors.sideColorGradient)});
-            colors = Object.assign({}, colors, {minorsideColor: $("#minorsideColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {textColor: $("#textColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {minortextColor: $("#accenttextColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {iconColor: $("#iconColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {secondarybackgroundColor: $("#secondarybgColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {tertiarybackgroundColor: $("#tertiarybgColorSelector").spectrum("get").toHexString()});
-            colors = Object.assign({}, colors, {hoverColor: $("#hoverColorSelector").spectrum("get").toHexString()});
+            colors = Object.assign({}, colors, {minorsideColor: $("#minorsideColorSelector")[0].value});
+            colors = Object.assign({}, colors, {textColor: $("#textColorSelector")[0].value});
+            colors = Object.assign({}, colors, {minortextColor: $("#accenttextColorSelector")[0].value});
+            colors = Object.assign({}, colors, {iconColor: $("#iconColorSelector")[0].value});
+            colors = Object.assign({}, colors, {secondarybackgroundColor: $("#secondarybgColorSelector")[0].value});
+            colors = Object.assign({}, colors, {tertiarybackgroundColor: $("#tertiarybgColorSelector")[0].value});
+            colors = Object.assign({}, colors, {hoverColor: $("#hoverColorSelector")[0].value});
 
-            //console.log(colors.sideColorGradient)
             GM_setValue("colors", colors)
             colors = GM_getValue('colors', defaultColors)
-
 
             document.documentElement.style.setProperty('--backgroundColor', colors.backgroundColor);
             if (sT == "Switch to Gradient") {
                 document.documentElement.style.setProperty('--sideColor', colors.sideColor);
-            } else {
+            } 
+            if (sT == "Switch to Static Color") {
                 document.documentElement.style.setProperty('--sideColor', colors.sideColorGradient);
             }
             document.documentElement.style.setProperty('--minorsideColor', colors.minorsideColor);
@@ -547,7 +648,6 @@
             document.documentElement.style.setProperty('--iconColor', colors.iconColor);
             document.documentElement.style.setProperty('--hoverColor', colors.hoverColor);
             document.documentElement.style.setProperty('--slimborderfixColor', colors.slimborderfixColor);
-            
         }
     }, 500);
 
