@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.2
-// @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js
-// @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js
+// @version      0.2.0
+// @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
+// @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
 // @author       External Host
 // @match        https://*.instructure.com/*
@@ -509,6 +509,7 @@
         });
         $('<div class="containerTheme">').appendTo('#dialog');
 
+        // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
             //page setup
             for (const theme of data) {
