@@ -2,8 +2,8 @@
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
 // @version      0.2.1
-// @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
-// @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
+// @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js
+// @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
 // @author       External Host
 // @match        https://*.instructure.com/*
