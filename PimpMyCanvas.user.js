@@ -20,7 +20,7 @@
 (function() {
     'use strict';
     GM_addStyle(GM_getResourceText('PICKERCSS'))
-    // test
+    // testa
     const defaultColors = {
         backgroundColor: "#faebd7",
         sideColor: "#ff6536",
