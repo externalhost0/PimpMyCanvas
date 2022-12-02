@@ -20,7 +20,7 @@
 (function() {
     'use strict';
     GM_addStyle(GM_getResourceText('PICKERCSS'))
-    // testa
+
     const defaultColors = {
         backgroundColor: "#faebd7",
         sideColor: "#ff6536",
@@ -412,6 +412,10 @@
 
     `)
 
+    // $.get("https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js", function(page) {
+    //     console.log(page)
+    // });
+
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
         $("#dialog").dialog("open");
@@ -512,30 +516,27 @@
         // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
             //page setup
-            for (const theme of data) {
-                let singleTheme = $('<div class="singleTheme">').appendTo(".containerTheme");
+            data.forEach((theme, idx) => {
+                let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
+                singleTheme.on("click", (e) => {
+                    console.log(e.target);
+                    let elementnum = parseInt(e.target.dataset.num);
+                    console.log(elementnum)
+                    for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
+                        console.log(data[elementnum][c])
+                    }
+                });
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
+                
                 //$(`<img>${theme.}<img>`).appendTo(singleTheme)
                 $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
 
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
                 }
-            }
-            //onClick any theme
-            $("#dialog").on("click", ".singleTheme", () => {
-                for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
-                    console.log()
-                }
             });
-            // $(document).click(function(event) {
-            //     var text = $(event.target).text();
-            //     for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
-                    
-            //         console.log(text.colors[c])
-            //         colors[c] = text.colors[c]
-            //     }
-            // });
+            // onClick any theme
+
         });
 
         for (let i=0; i<8; i++) {
