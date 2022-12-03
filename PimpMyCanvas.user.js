@@ -518,12 +518,11 @@
             //page setup
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
+                // onClick any theme
                 singleTheme.on("click", (e) => {
-                    console.log(e.target);
                     let elementnum = parseInt(e.target.dataset.num);
-                    console.log(elementnum)
                     for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
-                        console.log(data[elementnum][c])
+                        console.log(JSON.parse(elementnum.colors[c]))
                     }
                 });
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
@@ -535,7 +534,6 @@
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
                 }
             });
-            // onClick any theme
 
         });
 
