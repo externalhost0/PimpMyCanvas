@@ -1,7 +1,8 @@
 [
     {
       "name": "purple",
-      "img": "",
+      "test": "lmao",
+      "img": "https:\/\/raw.githubusercontent.com\/ExternalHost0\/PimpMyCanvas\/unmanaged\/images\/themeimages\/winton.png",
       "colors": {
         "backgroundColor": "#faabd7",
         "sideColor": "#d81b60",
@@ -22,7 +23,7 @@
   
     {
       "name": "blue",
-      "img": "",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/genji.png",
       "colors": {
         "backgroundColor": "#11108f",
         "sideColor": "#d81b60",

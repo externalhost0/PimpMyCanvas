@@ -66,6 +66,7 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --ic-brand-primary-darkened-15: var(--minorsideColor) !important;
         --deLCD-meterColorBrand: var(--minorsideColor) !important;
         --dNoYT-background: var(--backgroundColor) !important;
         --ic-link-color-lightened-10: 0 !important;
@@ -528,8 +529,10 @@
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
-                
-                $(`<img src="${theme.img}" />`).appendTo(singleTheme)
+                console.log(theme.test)
+                let image = theme.img.replace('\'', '');
+                console.log(image)
+                $(`<img src="${theme.img}"/>`).appendTo(singleTheme);
                 $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
 
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
