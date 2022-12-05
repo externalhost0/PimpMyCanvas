@@ -529,10 +529,9 @@
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
-                console.log(theme.test)
-                let image = theme.img.replace('\'', '');
-                console.log(image)
-                $(`<img src="${theme.img}"/>`).appendTo(singleTheme);
+                // fixes json url
+                let image = theme.img.replace('\/', '/');
+                $(`<img src="${image}"/>`).appendTo(singleTheme);
                 $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
 
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {

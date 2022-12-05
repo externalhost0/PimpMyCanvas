@@ -1,8 +1,7 @@
 [
     {
       "name": "purple",
-      "test": "lmao",
-      "img": "https:\/\/raw.githubusercontent.com\/ExternalHost0\/PimpMyCanvas\/unmanaged\/images\/themeimages\/winton.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/winton.png",
       "colors": {
         "backgroundColor": "#faabd7",
         "sideColor": "#d81b60",
