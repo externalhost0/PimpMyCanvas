@@ -65,6 +65,13 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --jpyTq-color: var(--minortextColor) !important;
+        --qBMHb-color: var(--minortextColor) !important;
+        --brMfX-background: var(--backgroundColor) !important;
+        --XOwIb-defaultColor: var(--textColor) !important;
+        --blnAQ-borderColor: var(--minortextColor) !important;
+        --voGQb-color: var(--textColor) !important;
+        --cCGLM-secondaryColor: var(--minortextColor) !important;
         --ic-brand-primary-darkened-15: var(--minorsideColor) !important;
         --deLCD-meterColorBrand: var(--minorsideColor) !important;
         --dNoYT-background: var(--backgroundColor) !important;
@@ -144,7 +151,26 @@
 
     body {
         transition: ease-in-out 300ms;
-        background: var(--backgroundColor)
+        background: var(--backgroundColor);
+        color: var(--textColor) !important;
+    }
+    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .enRcg_bGBk.enRcg_bLsb, .ctrLD_bGBk, .dUOHu_drOs {
+        color: var(--textColor) !important;
+    }
+    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages {
+        color: var(--textColor);
+    }
+    [dir="ltr"] .qBMHb_cwos.qBMHb_EMjX, [dir="ltr"] input[type].qBMHb_cwos.qBMHb_EMjX {
+        color: var(--backgroundColor)
+    }
+    .ig-header .name {
+        text-shadow: none !important;
+    }
+    .ig-list .ig-row a.ig-title, #right-side .right-side-list li p, .fCrpb_egrg, .Button, #grades_summary th.title .context {
+        color: var(--minortextColor) !important;
+    }
+    .list-view a.active {
+        color: var(--minorsideColor);
     }
     .Button.Button--primary:hover {
         background: var(--hoverColor) !important;
