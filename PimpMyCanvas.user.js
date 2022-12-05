@@ -411,6 +411,11 @@
         display: table-cell;
         background: orange;
     }
+    .themeImage {
+        display: flex;
+        max-height: 70%;
+
+    }
 
     `)
 
@@ -501,7 +506,7 @@
 
     $(document).ready(() => {
         $('<div id="dialog">').appendTo('body');
-
+        // dialog function + setup
         $("#dialog").dialog({
             draggable: false,
             resizable: false,
@@ -513,26 +518,24 @@
             open: function (event, ui) {
                 $(".ui-widget-overlay").addClass('modal-opened');
                 $('body').css('overflow', 'hidden');
-
             },
             close: function(event, ui){
                 $(".ui-widget-overlay").removeClass('modal-opened');
                 $('body').css('overflow', 'auto');
-
             }
         });
         $('<div class="containerTheme">').appendTo('#dialog');
 
         // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
-            //page setup
+            //dialog setup
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
-                let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
-                // fixes json url
+                // fixes json's backslashes
                 let image = theme.img.replace('\/', '/');
-                $(`<img src="${image}"/>`).appendTo(singleTheme);
-                $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
+                $(`<img class="themeImage" src="${image}"/>`).appendTo(singleTheme);
+                let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
+                $(`<h3 style="margin:0; font-size:30px;">${theme.name}</h3>`).appendTo(singleTheme);
 
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
@@ -545,16 +548,11 @@
                     })
                 });
             });
-            
         });
         for (let i=0; i<8; i++) {
             $('<div class="colorsforTheme" id="c' + i +'">').appendTo(".colorTiles");
         }
-        
-        
     });
-    
-    
 
     $("body").on("click", "#pmcExportButton", () => {
         download(JSON.stringify(colors), "userColors.json", "text/plain")
