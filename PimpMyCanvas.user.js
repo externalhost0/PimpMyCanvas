@@ -20,7 +20,6 @@
 
 (function() {
     'use strict';
-    GM_addStyle(GM_getResourceText('PICKERCSS'))
 
     const defaultColors = {
         backgroundColor: "#faebd7",
@@ -535,7 +534,7 @@
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
                 // fixes json's backslashes
-                let image = theme.img.replace('\/', '/');
+                let image = theme.img.replace('\/', '/')
                 $(`<img class="themeImage" src="${image}"/>`).appendTo(singleTheme);
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
                 $(`<h3 style="margin:0; font-size:30px;">${theme.name}</h3>`).appendTo(singleTheme);
@@ -545,16 +544,13 @@
                 }
                 // on click for any theme
                 $('.singleTheme').on("click", function() {
-                    let idx = $(this).data('num')
+                    idx = $(this).data('num')
                     Object.entries(data[idx].colors).forEach(color => {
                         colors[color[0]] = color[1]
                     })
                 });
             });
         });
-        for (let i=0; i<8; i++) {
-            $('<div class="colorsforTheme" id="c' + i +'">').appendTo(".colorTiles");
-        }
     });
 
     $("body").on("click", "#pmcExportButton", () => {
@@ -641,7 +637,6 @@
 
     setInterval(() => {
         if ($('#pmcdiv').length) {
-
             colors = Object.assign({}, colors, {backgroundColor: $("#backgroundColorSelector")[0].value});
             colors = Object.assign({}, colors, {sideColor: $("#sideColorSelector")[0].value});
             colors = Object.assign({}, colors, {sideColorGradient: GM_getValue('sideColorGradient', colors.sideColorGradient)});

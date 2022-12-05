@@ -22,7 +22,7 @@
   
     {
       "name": "blue",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/genji.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
       "colors": {
         "backgroundColor": "#11108f",
         "sideColor": "#d81b60",
@@ -43,7 +43,7 @@
 
     {
       "name": "Industrial SkyBlue",
-      "img":"https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
       "colors": {
         "backgroundColor":"#f2f0ed",
         "sideColor":"#454545",
@@ -55,7 +55,7 @@
         "minortextColor":"#1c1b26",
         "buttonbackColor":"#ffffff",
         "secondarybackgroundColor":"#8dadf7",
-        "tertiarybackgroundColor":"#faf0e3",
+        "tertiarybackgroundColor":"#34e5eb",
         "hoverColor":"#addaf0",
         "iconColor":"#ffffff",
         "slimborderfixColor":"#c7cdd1"
