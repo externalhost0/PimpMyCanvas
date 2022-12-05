@@ -1,6 +1,7 @@
 [
     {
       "name": "purple",
+      "img": "",
       "colors": {
         "backgroundColor": "#faabd7",
         "sideColor": "#d81b60",
@@ -21,6 +22,7 @@
   
     {
       "name": "blue",
+      "img": "",
       "colors": {
         "backgroundColor": "#11108f",
         "sideColor": "#d81b60",

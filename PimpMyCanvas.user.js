@@ -15,6 +15,7 @@
 // @grant        GM_getResourceText
 // @grant        GM_getValue
 // @grant        GM_setValue
+// @require      https://cdn.skypack.dev/pin/@octokit/rest@v19.0.5-R1t0uWcNXRDqzl4Yp10b/mode=imports,min/optimized/@octokit/rest.js
 // ==/UserScript==
 
 (function() {
@@ -415,6 +416,14 @@
     // $.get("https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js", function(page) {
     //     console.log(page)
     // });
+    // const octokit = new Octokit({
+    //     auth: 'YOUR-TOKEN'
+    // })
+
+    // await octokit.request('GET /repos/{owner}/{repo}', {
+    //     owner: 'OWNER',
+    //     repo: 'REPO'
+    // })
 
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
@@ -518,32 +527,32 @@
             //page setup
             data.forEach((theme, idx) => {
                 let singleTheme = $(`<div class="singleTheme" data-num=${idx}>`).appendTo(".containerTheme");
-                // onClick any theme
-                singleTheme.on("click", (e) => {
-                    let elementnum = parseInt(e.target.dataset.num);
-                    for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
-                        console.log(JSON.parse(elementnum.colors[c]))
-                    }
-                });
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
                 
-                //$(`<img>${theme.}<img>`).appendTo(singleTheme)
+                $(`<img src="${theme.img}" />`).appendTo(singleTheme)
                 $(`<h3>${theme.name}</h3>`).appendTo(singleTheme);
 
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
                 }
+                // on click for any theme
+                $('.singleTheme').on("click", function() {
+                    let idx = $(this).data('num')
+                    Object.entries(data[idx].colors).forEach(color => {
+                        colors[color[0]] = color[1]
+                    })
+                });
             });
-
+            
         });
-
         for (let i=0; i<8; i++) {
             $('<div class="colorsforTheme" id="c' + i +'">').appendTo(".colorTiles");
         }
-
-
-
+        
+        
     });
+    
+    
 
     $("body").on("click", "#pmcExportButton", () => {
         download(JSON.stringify(colors), "userColors.json", "text/plain")
@@ -620,7 +629,10 @@
         $("#secondarybgColorSelector")[0].value = defaultColors.secondarybackgroundColor;
         $("#tertiarybgColorSelector")[0].value = defaultColors.tertiarybackgroundColor;
         $("#hoverColorSelector")[0].value = defaultColors.hoverColor;
-
+        colors.slimborderfixColor = defaultColors.slimborderfixColor;
+        colors.dangerColor = defaultColors.dangerColor;
+        colors.newNotifColor = defaultColors.newNotifColor;
+        colors.buttonbackColor = defaultColors.buttonbackColor;
 
     });
 
