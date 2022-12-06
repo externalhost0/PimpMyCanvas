@@ -78,25 +78,5 @@
         "iconColor":"#ffffff",
         "slimborderfixColor":"#c7cdd1"
       }
-    },
-    {
-      "name": "Miami Vice",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/the.png",
-      "colors": {
-        "backgroundColor":"#f6eef4",
-        "sideColor":"#3ebbb3",
-        "sideColorGradient":"linear-gradient(0deg, #191919, #FF33E5, #33E5FF, #3ebbb3, #ffffff)",
-        "minorsideColor":"#fb56ed",
-        "newNotifColor":"#3368FF",
-        "dangerColor":"#ff0d41",
-        "textColor":"#484b56",
-        "minortextColor":"#5a4959",
-        "buttonbackColor":"#ffffff",
-        "secondarybackgroundColor":"#f787e8",
-        "tertiarybackgroundColor":"#c0eced",
-        "hoverColor":"#f5b8f3",
-        "iconColor":"#ffffff",
-        "slimborderfixColor":"#c7cdd1"
-      }
     }
 ]

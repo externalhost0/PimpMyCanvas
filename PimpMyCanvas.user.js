@@ -469,14 +469,14 @@
 
     `)
 
-    $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits/master", function(page) {
-        if (GM_getValue("GitHub Current Commit", "First Time") == page.commit.message) {
+    // $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits/master", function(page) {
+    //     if (GM_getValue("GitHub Current Commit", "First Time") == page.commit.message) {
             
-        } else {
+    //     } else {
 
-        }
-        GM_setValue("GitHub Current Commit", page.commit.message)
-    });
+    //     }
+    //     GM_setValue("GitHub Current Commit", page.commit.message)
+    // });
 
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
