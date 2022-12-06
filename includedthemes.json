@@ -1,45 +1,82 @@
 [
     {
-        "theme": 1,
-        "colors": {
-            "backgroundColor": "#faabd7",
-            "sideColor": "#d81b60",
-            "sideColorGradient": "linear-gradient(0deg, #fee024, #e0eee6, #e5ee4e)",
-            "minorsideColor": "#e438e9",
-            "newNotifColor": "#ffaeed",
-            "dangerColor": "#ff0de1",
-            "textColor": "#03081f",
-            "minortextColor": "#1c1b26",
-            "buttonbackColor": "#ffffff",
-            "secondarybackgroundColor": "#e7c8eb",
-            "tertiarybackgroundColor": "#faf0ee",
-            "hoverColor": "#fa9aee",
-            "iconColor": "#ffffff",
-            "slimborderfixColor": "#c7cdd1"
-        
-        }
-        
+      "name": "Dark Mode",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/darkmode.png",
+      "colors": {
+        "backgroundColor": "#262626",
+        "sideColor": "#121212",
+        "sideColorGradient": "linear-gradient(0deg, #161616, #00171f, #003459, #007ea7, #00a8e8)",
+        "minorsideColor": "#0971d3",
+        "newNotifColor": "#fee024",
+        "dangerColor": "#ff0d41",
+        "textColor": "#e3e3e3",
+        "minortextColor": "#d6d6d6",
+        "buttonbackColor": "#ffffff",
+        "secondarybackgroundColor": "#1c1c1c",
+        "tertiarybackgroundColor": "#2b2b2b",
+        "hoverColor": "#2474f5",
+        "iconColor": "#ffffff",
+        "slimborderfixColor": "#c7cdd1"
+      }
     },
     {
-        "theme": 2,
-        "colors": {
-            "backgroundColor": "#111bd7",
-            "sideColor": "#d81b60",
-            "sideColorGradient": "linear-gradient(0deg, #fee024, #e0eee6, #e5ee4e)",
-            "minorsideColor": "#e438e9",
-            "newNotifColor": "#ffaeed",
-            "dangerColor": "#ff0de1",
-            "textColor": "#03081f",
-            "minortextColor": "#1c1b26",
-            "buttonbackColor": "#ffffff",
-            "secondarybackgroundColor": "#e7c8eb",
-            "tertiarybackgroundColor": "#faf0ee",
-            "hoverColor": "#fa9aee",
-            "iconColor": "#ffffff",
-            "slimborderfixColor": "#c7cdd1"
-        
-        }
-        
+      "name": "Material Red",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/materialred.png",
+      "colors": {
+        "backgroundColor": "#f5f5f5",
+        "sideColor": "#cf2a2a",
+        "sideColorGradient": "linear-gradient(0deg, #2b2d42, #8d99ae, #edf2f4, #ef233c, #d90429)",
+        "minorsideColor": "#f44e4e",
+        "newNotifColor": "#FFDE33",
+        "dangerColor": "#ff0d41",
+        "textColor": "#03081f",
+        "minortextColor": "#1c1b26",
+        "buttonbackColor": "#ffffff",
+        "secondarybackgroundColor": "#d62e2e",
+        "tertiarybackgroundColor": "#eeeded",
+        "hoverColor": "#FF3C33",
+        "iconColor": "#ffffff",
+        "slimborderfixColor": "#c7cdd1"
+      }
+    },
+    {
+      "name": "Industrial SkyBlue",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/industrialskyblue.png",
+      "colors": {
+        "backgroundColor":"#f2f0ed",
+        "sideColor":"#454545",
+        "sideColorGradient":"linear-gradient(0deg, #03045e, #0077b6, #00b4d8, #90e0ef, #caf0f8)",
+        "minorsideColor":"#90e0ef",
+        "newNotifColor":"#3368FF",
+        "dangerColor":"#ff0d41",
+        "textColor":"#03081f",
+        "minortextColor":"#1c1b26",
+        "buttonbackColor":"#ffffff",
+        "secondarybackgroundColor":"#828282",
+        "tertiarybackgroundColor":"#9dbee2",
+        "hoverColor":"#00b4d8",
+        "iconColor":"#ffffff",
+        "slimborderfixColor":"#c7cdd1"
+      }
+    }, 
+    {
+      "name": "Miami Vice",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/miamivice.png",
+      "colors": {
+        "backgroundColor":"#f6eef4",
+        "sideColor":"#3ebbb3",
+        "sideColorGradient":"linear-gradient(0deg, #FF33E5, #ffffff, #33E5FF, #3ebbb3, #191919)",
+        "minorsideColor":"#fb56ed",
+        "newNotifColor":"#3368FF",
+        "dangerColor":"#ff0d41",
+        "textColor":"#484b56",
+        "minortextColor":"#5a4959",
+        "buttonbackColor":"#ffffff",
+        "secondarybackgroundColor":"#f787e8",
+        "tertiarybackgroundColor":"#c0eced",
+        "hoverColor":"#f5b8f3",
+        "iconColor":"#ffffff",
+        "slimborderfixColor":"#c7cdd1"
+      }
     }
-    
 ]
