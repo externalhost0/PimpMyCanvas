@@ -154,14 +154,14 @@
         background: var(--backgroundColor);
         color: var(--textColor) !important;
     }
-    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .enRcg_bGBk.enRcg_bLsb, .ctrLD_bGBk, .dUOHu_drOs {
+    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .enRcg_bGBk.enRcg_bLsb, .ctrLD_bGBk{
         color: var(--textColor) !important;
     }
-    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages {
+    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs {
         color: var(--textColor);
     }
     [dir="ltr"] .qBMHb_cwos.qBMHb_EMjX, [dir="ltr"] input[type].qBMHb_cwos.qBMHb_EMjX {
-        color: var(--backgroundColor)
+        color: var(--textColor)
     }
     .ig-header .name {
         text-shadow: none !important;
@@ -176,8 +176,9 @@
         background: var(--hoverColor) !important;
     }
 
-    .ui-dialog .ui-dialog-titlebar.ui-widget-header{
-        background: var(--backgroundColor) !important;
+    .ui-dialog .ui-dialog-titlebar.ui-widget-header, .ui-dialog .ui-dialog-title{
+        font-weight: bold;
+        font-size: 22px;
     }
     .ic-app-header { /* SIDEBAR */
         animation: gradient 10s ease infinite;
@@ -203,7 +204,7 @@
         opacity: 0.95;
         transition: ease-in-out 300ms;
     }
-    .PlannerHeader-styles__root.PlannerHeader, #minical, .module-sequence-footer .module-sequence-footer-content, .file-upload-submission, #questions.assessing, #calendar-app .fc-month-view .fc-body, #calendar-drag-and-drop-container .fc-month-view .fc-body, #calendar-list-holder, #other-calendars-list-holder, #undated-events, table.summary td, table.summary tbody th, .Day-styles__root, .item-group-container, .dialog_opener.Button.Button--link {
+    .PlannerHeader-styles__root.PlannerHeader, #minical, .module-sequence-footer .module-sequence-footer-content, .file-upload-submission, #questions.assessing, #calendar-app .fc-month-view .fc-body, #calendar-drag-and-drop-container .fc-month-view .fc-body, #calendar-list-holder, #other-calendars-list-holder, #undated-events, table.summary td, table.summary tbody th, .Day-styles__root, .item-group-container, .dialog_opener.Button.Button--link, .fOyUs_bGBk .fOyUs_bGBk.fOyUs_desw.bDzpk_bGBk.bDzpk_busO.bDzpk_cQFX.bDzpk_bZNM .fOyUs_bGBk.fOyUs_fKlg.dJCgj_bGBk {
         background: 0;
     }
     #calendar-app .fc-month-view .fc-today, #calendar-drag-and-drop-container .fc-month-view .fc-today, .item-group-condensed .ig-header, #questions.assessment_results .question .header, .conversations .panel, .question .header, .ic-notification__icon, .ic-Action-header .ic-Action-header__Secondary>.Button, .ic-Action-header .ic-Action-header__Secondary>.btn, .ic-Action-header .ic-Action-header__Secondary>.ui-button{
@@ -235,7 +236,7 @@
         background: var(--hoverColor) !important;
         transition: ease-in-out 300ms;
     }
-    .btn, .fOyUs_bGBk .fOyUs_bGBk.fOyUs_desw.bDzpk_bGBk.bDzpk_busO.bDzpk_cQFX.bDzpk_bZNM .fOyUs_bGBk.fOyUs_fKlg.dJCgj_bGBk, .fOyUs_bGBk.eIQkd_bGBk .fwfoD_bGBk.fwfoD_fsuY.fwfoD_EMjX {
+    .btn, .fOyUs_bGBk.eIQkd_bGBk .fwfoD_bGBk.fwfoD_fsuY.fwfoD_EMjX {
         background: var(--tertiarybackgroundColor); /* background of buttons but also some text */
     }
     .fOyUs_bGBk.fOyUs_desw.bDzpk_bGBk.bDzpk_busO.bDzpk_cQFX.bDzpk_bZNM .fOyUs_bGBk.fOyUs_fKlg.dJCgj_bGBk .fOyUs_bGBk {
@@ -427,9 +428,13 @@
         padding: 10px;
         margin: 0;
         background: #F6F6F6;
+        padding-bottom: 0;
+        box-shadow: 9px 9px 6px 0px #bebebe;
+        transition: 100ms ease-in-out;
     }
     .singleTheme:hover {
         cursor: pointer;
+        box-shadow: 2px 2px 1px 0px #bebebe;
     }
     .colorsForTheme {
         width: 2rem;
@@ -439,10 +444,15 @@
         display: table-cell;
         background: orange;
     }
+    .colorTiles {
+        border: 4px solid;
+        border-color: #5a5a5a;
+        border-radius: 5px;
+    }
     .themeImage {
         display: flex;
+        margin: auto;
         max-height: 70%;
-
     }
 
     `)
@@ -563,8 +573,8 @@
                 let image = theme.img.replace('\/', '/')
                 $(`<img class="themeImage" src="${image}"/>`).appendTo(singleTheme);
                 let colorTiles = $('<div class="colorTiles">').appendTo(singleTheme);
-                $(`<h3 style="margin:0; font-size:30px;">${theme.name}</h3>`).appendTo(singleTheme);
-
+                $(`<h4 style="margin:0; font-size:21px;">${theme.name}</h4>`).appendTo(singleTheme);
+                // makes each colored tile
                 for (const c of ["backgroundColor", "sideColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor"]) {
                     $(`<div class="colorsForTheme" style="background-color: ${theme.colors[c]};">`).appendTo(colorTiles);
                 }
@@ -578,7 +588,7 @@
             });
         });
     });
-
+    //exports all colors in simple text file
     $("body").on("click", "#pmcExportButton", () => {
         download(JSON.stringify(colors), "userColors.json", "text/plain")
     });
@@ -590,7 +600,6 @@
         a.click();
     }
     
-
     // submit button for custom gradient
     $("body").on("click", "#customGradButton", () => {
         //color pallettes from https://coolors.co/
