@@ -15,7 +15,6 @@
 // @grant        GM_getResourceText
 // @grant        GM_getValue
 // @grant        GM_setValue
-// @require      https://cdn.skypack.dev/pin/@octokit/rest@v19.0.5-R1t0uWcNXRDqzl4Yp10b/mode=imports,min/optimized/@octokit/rest.js
 // ==/UserScript==
 
 (function() {
@@ -65,6 +64,9 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --sJGfW-labelColor: var(--minorsideColor) !important;
+        --eoNrR-color: var(--minortextColor) !important;
+        --eAJaG-secondaryColor: var(--minortextColor) !important;
         --jpyTq-color: var(--minortextColor) !important;
         --qBMHb-color: var(--minortextColor) !important;
         --brMfX-background: var(--backgroundColor) !important;
@@ -154,8 +156,14 @@
         background: var(--backgroundColor);
         color: var(--textColor) !important;
     }
-    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .enRcg_bGBk.enRcg_bLsb, .ctrLD_bGBk{
+    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk{
         color: var(--textColor) !important;
+    }
+    #global_nav_dashboard_link {
+        text-decoration: none;
+    }
+    .enRcg_bGBk.enRcg_bLsb {
+        color: var(--minortextColor) !important;
     }
     .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs {
         color: var(--textColor);
@@ -196,7 +204,7 @@
     .ic-DashboardCard__action-badge {
         background-size: 300% 300%;
     }
-    .ic-Dashboard-header__layout {
+    .ic-Dashboard-header__layout, .ic-notification__content {
         background: var(--backgroundColor);
     }
     .large.ic-Dashboard-header__layout, .react-rubric td, .react-rubric th {
@@ -252,6 +260,9 @@
     }
     .item-group-condensed .ig-row, .question .text, .ic-DashboardCard, .ic-DashboardCard__header_content {
         background: var(--tertiarybackgroundColor);
+    }
+    .item-group-condensed .ig-row {
+        transition: 150ms ease-in-out;
     }
     .ig-list .ig-row:hover, .btn-primary {
         background: var(--hoverColor);
@@ -353,6 +364,7 @@
         margin: 5px 0;
         line-height: 1.5;
         font-family: var(--fOyUs-fontFamily);
+        color: var(--minortextColor)
     }
     .ColorSelector{
         width: 50px;
@@ -457,17 +469,14 @@
 
     `)
 
-    // $.get("https://github.com/ExternalHost0/PimpMyCanvas/raw/unmanaged/PimpMyCanvas.user.js", function(page) {
-    //     console.log(page)
-    // });
-    // const octokit = new Octokit({
-    //     auth: 'YOUR-TOKEN'
-    // })
+    $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits/master", function(page) {
+        if (GM_getValue("GitHub Current Commit", "First Time") == page.commit.message) {
+            
+        } else {
 
-    // await octokit.request('GET /repos/{owner}/{repo}', {
-    //     owner: 'OWNER',
-    //     repo: 'REPO'
-    // })
+        }
+        GM_setValue("GitHub Current Commit", page.commit.message)
+    });
 
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
@@ -581,13 +590,16 @@
                 // on click for any theme
                 $('.singleTheme').on("click", function() {
                     idx = $(this).data('num')
-                    Object.entries(data[idx].colors).forEach(color => {
-                        colors[color[0]] = color[1]
+                    Object.entries(data[idx].colors).forEach(([key, value]) => {
+                        colors[key] = value
+                        document.documentElement.style.setProperty('--' + [key], colors[key]);
                     })
+                    GM_setValue("colors", colors)
                 });
             });
         });
     });
+    
     //exports all colors in simple text file
     $("body").on("click", "#pmcExportButton", () => {
         download(JSON.stringify(colors), "userColors.json", "text/plain")
@@ -630,7 +642,6 @@
         GM_setValue("sT", sT)
     });
 
-
     let isHidden = false //sets isHidden true as menu is always off when tray opened
     // On click of menu, PMC opens
     // function is for button animation
@@ -667,7 +678,6 @@
         colors.dangerColor = defaultColors.dangerColor;
         colors.newNotifColor = defaultColors.newNotifColor;
         colors.buttonbackColor = defaultColors.buttonbackColor;
-
     });
 
     setInterval(() => {
@@ -686,24 +696,15 @@
             GM_setValue("colors", colors)
             colors = GM_getValue('colors', defaultColors)
 
-            document.documentElement.style.setProperty('--backgroundColor', colors.backgroundColor);
             if (sT == "Switch to Gradient") {
                 document.documentElement.style.setProperty('--sideColor', colors.sideColor);
             } 
             if (sT == "Switch to Static Color") {
                 document.documentElement.style.setProperty('--sideColor', colors.sideColorGradient);
             }
-            document.documentElement.style.setProperty('--minorsideColor', colors.minorsideColor);
-            document.documentElement.style.setProperty('--newNotifColor', colors.newNotifColor);
-            document.documentElement.style.setProperty('--dangerColor', colors.dangerColor);
-            document.documentElement.style.setProperty('--textColor', colors.textColor);
-            document.documentElement.style.setProperty('--minortextColor', colors.minortextColor);
-            document.documentElement.style.setProperty('--buttonbackColor', colors.buttonbackColor);
-            document.documentElement.style.setProperty('--secondarybackgroundColor', colors.secondarybackgroundColor);
-            document.documentElement.style.setProperty('--tertiarybackgroundColor', colors.tertiarybackgroundColor);
-            document.documentElement.style.setProperty('--iconColor', colors.iconColor);
-            document.documentElement.style.setProperty('--hoverColor', colors.hoverColor);
-            document.documentElement.style.setProperty('--slimborderfixColor', colors.slimborderfixColor);
+            for (const c of ["backgroundColor", "minorsideColor", "textColor", "minortextColor", "iconColor", "secondarybackgroundColor", "tertiarybackgroundColor", "hoverColor", "slimborderfixColor", "newNotifColor", "dangerColor", "buttonbackColor"]) {
+                document.documentElement.style.setProperty('--' + [c], colors[c]);
+            }
         }
     }, 500);
 
