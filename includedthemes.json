@@ -1,7 +1,7 @@
 [
     {
       "name": "Dark Mode",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/darkmode.png",
       "colors": {
         "backgroundColor": "#262626",
         "sideColor": "#121212",
@@ -22,7 +22,7 @@
   
     {
       "name": "Material Red",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/materialred.png",
       "colors": {
         "backgroundColor": "#f5f5f5",
         "sideColor": "#cf2a2a",
@@ -43,20 +43,20 @@
 
     {
       "name": "Industrial SkyBlue",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/Dashboard1.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/industrialskyblue.png",
       "colors": {
         "backgroundColor":"#f2f0ed",
         "sideColor":"#454545",
         "sideColorGradient":"linear-gradient(0deg, #03045e, #0077b6, #00b4d8, #90e0ef, #caf0f8)",
-        "minorsideColor":"#0956d3",
+        "minorsideColor":"#90e0ef",
         "newNotifColor":"#3368FF",
         "dangerColor":"#ff0d41",
         "textColor":"#03081f",
         "minortextColor":"#1c1b26",
         "buttonbackColor":"#ffffff",
-        "secondarybackgroundColor":"#464a53",
-        "tertiarybackgroundColor":"#73b2d9",
-        "hoverColor":"#addaf0",
+        "secondarybackgroundColor":"#828282",
+        "tertiarybackgroundColor":"#9dbee2",
+        "hoverColor":"#00b4d8",
         "iconColor":"#ffffff",
         "slimborderfixColor":"#c7cdd1"
       }
