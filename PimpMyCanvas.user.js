@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.2.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -64,6 +64,7 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --feqxT-color: var(--iconColor) !important;
         --sJGfW-labelColor: var(--minorsideColor) !important;
         --eoNrR-color: var(--minortextColor) !important;
         --eAJaG-secondaryColor: var(--minortextColor) !important;
@@ -150,13 +151,15 @@
         --ic-link-color: var(--textColor) !important; /* sidebar text below icons when selected */
 
     }
-
+    tox-edit-area active {
+        background-color: white;
+    }
     body {
         transition: ease-in-out 300ms;
         background: var(--backgroundColor);
         color: var(--textColor) !important;
     }
-    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk{
+    #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk, .question .header .question_points_holder{
         color: var(--textColor) !important;
     }
     #global_nav_dashboard_link {
@@ -167,6 +170,9 @@
     }
     .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs {
         color: var(--textColor);
+    }
+    .dUOHu_drOs .StickyButton-styles__layout {
+        color: var(--iconColor)
     }
     [dir="ltr"] .qBMHb_cwos.qBMHb_EMjX, [dir="ltr"] input[type].qBMHb_cwos.qBMHb_EMjX {
         color: var(--textColor)
@@ -469,15 +475,6 @@
 
     `)
 
-    // $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits/master", function(page) {
-    //     if (GM_getValue("GitHub Current Commit", "First Time") == page.commit.message) {
-            
-    //     } else {
-
-    //     }
-    //     GM_setValue("GitHub Current Commit", page.commit.message)
-    // });
-
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
         $("#dialog").dialog("open");
@@ -494,6 +491,11 @@
                 $('<span class="faJyW_bGBk" id="pmcspan">').appendTo('#pmcdiv');
                 $('<span id="pmccheck" class="faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw" aria-hidden="true"><span class="faJyW_dnnz"><span class="faJyW_cMpH"><svg name="IconX" viewBox="0 0 1920 1920" rotate="0" width="1em" height="1em" aria-hidden="true" role="presentation" focusable="false" class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk faJyW_eoCh" style="width: 1em; height: 1em;"><g role="presentation"><path class="innerappend" d="M1743.8579 267.012456L710.746654 1300.1237 176.005086 765.382131 0 941.387217 710.746654 1652.25843 1919.98754 443.142104z" fill-rule="nonzero" stroke="none" stroke-width="1"></path></g></svg></span></span></span>').appendTo('#pmcspan');
                 $('<span id="pmctext">Show PMC Menu</span>').appendTo('#pmcspan');
+                
+                // New Update Warning
+                if (GM.info.script.version == "0.E") {
+                    $('<div style="background:aqua; width:100px; height:100px;"/>').appendTo('#pmcControldiv');
+                }
 
                 $('<hr>').appendTo('#pmcControldiv');
                 // PMC Controls
@@ -550,6 +552,19 @@
             }
         }
     }, 500);
+
+    $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits/master", function(page) {
+        // first time using
+        if (GM_getValue("GitHub Current Commit") == undefined) {
+            return
+        }
+        // new commit available
+        if (GM_getValue("GitHub Current Commit") != page.commit.message) {
+            
+            GM_setValue("GitHub Current Commit", page.commit.message)
+            
+        }
+    });
 
     $(document).ready(() => {
         $('<div id="dialog">').appendTo('body');
