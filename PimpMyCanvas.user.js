@@ -578,7 +578,7 @@
 
     $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
         // first time using, should never trigger again unless reinstalled or storage is wiped
-        if (GM_getValue("GitHub Current Commit") == undefined) {
+        if (GM_getValue("GitHub Current Commit", undefined) == undefined) {
             GM_setValue("Github Current Commit", page[0].sha)
             GM_setValue("Current Script Version", GM.info.script.version)
             return
