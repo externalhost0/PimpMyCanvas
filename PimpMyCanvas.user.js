@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.3
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -587,7 +587,6 @@
         if (GM.info.script.version > GM_getValue("Current Script Version")) {
             GM_setValue("Current Script Version", GM.info.script.version)
             GM_setValue("Github Current Commit", page[0].sha)
-            return
         }
         // new commit available
         if (GM_getValue("GitHub Current Commit") != page[0].sha) {
@@ -656,9 +655,7 @@
                 $('#alertbutton').css('background-color', '#4fd6ff');
                 $('#alertdialog').css('background-color', '#00c3ff');
             });
-
         }
-        
         
     });
 
