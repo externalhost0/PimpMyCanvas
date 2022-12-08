@@ -22,6 +22,9 @@ If you have any trouble with installation, refer to the video below.
 
 *[How to Install Tampermonkey](https://www.youtube.com/watch?v=kjeERqWY04s)*
 ___
+## Theme Library
+The theme library button will open up an assortment of available themes that you can select. More themes are planned to be added.
+___
 ## Custom Pallete Feature
 Using Coolors, a free to use website, you can make your own gradients by simply copying the url of any pallete and pasting it into PMC.
 #### https://coolors.co/
