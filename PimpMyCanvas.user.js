@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.2
+// @version      0.2.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -578,7 +578,6 @@
 
     $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
         // first time using, should never trigger again unless reinstalled or storage is wiped
-        GM_setValue("Current Script Version", GM.info.script.version)
         if (GM_getValue("GitHub Current Commit") == undefined) {
             GM_setValue("Github Current Commit", page[0].sha)
             GM_setValue("Current Script Version", GM.info.script.version)
