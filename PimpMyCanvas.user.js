@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.4
+// @version      0.2.5
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
