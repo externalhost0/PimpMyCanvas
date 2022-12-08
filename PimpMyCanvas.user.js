@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.3
+// @version      0.2.4
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -351,7 +351,6 @@
 	    50% {background-position: 100% 100%;}
 	    100% {background-position: 0% 0%;}
     }
-  }
 
     #pmcdiv {
         position: relative;
@@ -584,6 +583,8 @@
             GM_setValue("Current Script Version", GM.info.script.version)
             return
         }
+        console.log(page[0].sha)
+        console.log(GM_getValue("GitHub Current Commit"))
         if (GM.info.script.version > GM_getValue("Current Script Version")) {
             GM_setValue("Current Script Version", GM.info.script.version)
             GM_setValue("Github Current Commit", page[0].sha)
