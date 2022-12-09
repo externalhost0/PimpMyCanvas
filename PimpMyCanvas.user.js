@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.7
+// @version      0.2.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -497,7 +497,6 @@
     }
 
     `)
-
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
         $("#dialog").dialog("open");
@@ -514,11 +513,6 @@
                 $('<span class="faJyW_bGBk" id="pmcspan">').appendTo('#pmcdiv');
                 $('<span id="pmccheck" class="faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw" aria-hidden="true"><span class="faJyW_dnnz"><span class="faJyW_cMpH"><svg name="IconX" viewBox="0 0 1920 1920" rotate="0" width="1em" height="1em" aria-hidden="true" role="presentation" focusable="false" class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk faJyW_eoCh" style="width: 1em; height: 1em;"><g role="presentation"><path class="innerappend" d="M1743.8579 267.012456L710.746654 1300.1237 176.005086 765.382131 0 941.387217 710.746654 1652.25843 1919.98754 443.142104z" fill-rule="nonzero" stroke="none" stroke-width="1"></path></g></svg></span></span></span>').appendTo('#pmcspan');
                 $('<span id="pmctext">Show PMC Menu</span>').appendTo('#pmcspan');
-                
-                // New Update Warning
-                if (GM.info.script.version == "0.E") {
-                    $('<div style="background:aqua; width:100px; height:100px;"/>').appendTo('#pmcControldiv');
-                }
 
                 $('<hr>').appendTo('#pmcControldiv');
                 // PMC Controls
@@ -578,19 +572,16 @@
 
     $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
         // first time using, should never trigger again unless reinstalled or storage is wiped
-        if (GM_getValue("GitHub Current Commit", undefined) == undefined) {
+        if (GM_getValue("Github Current Commit", undefined) == undefined) {
             GM_setValue("Github Current Commit", page[0].sha)
             GM_setValue("Current Script Version", GM.info.script.version)
-            return
         }
-        console.log(page[0].sha)
-        console.log(GM_getValue("GitHub Current Commit"))
         if (GM.info.script.version > GM_getValue("Current Script Version")) {
             GM_setValue("Current Script Version", GM.info.script.version)
             GM_setValue("Github Current Commit", page[0].sha)
         }
         // new commit available
-        if (GM_getValue("GitHub Current Commit") != page[0].sha) {
+        if (GM_getValue("Github Current Commit") != page[0].sha) {
             $(/*html*/`
             <div id="alertdialog">
                 <div class= "alertcontents">
