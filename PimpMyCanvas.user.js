@@ -570,83 +570,94 @@
         }
     }, 500);
 
+    // UPDATE WARNING FEATURE
     $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
         // first time using, should never trigger again unless reinstalled or storage is wiped
         if (GM_getValue("Github Current Commit", undefined) == undefined) {
             GM_setValue("Github Current Commit", page[0].sha)
             GM_setValue("Current Script Version", GM.info.script.version)
         }
+        // when the script is updated
         if (GM.info.script.version > GM_getValue("Current Script Version")) {
             GM_setValue("Current Script Version", GM.info.script.version)
             GM_setValue("Github Current Commit", page[0].sha)
         }
         // new commit available
         if (GM_getValue("Github Current Commit") != page[0].sha) {
-            $(/*html*/`
-            <div id="alertdialog">
-                <div class= "alertcontents">
-                    <svg style="margin-left: 6px; fill: #1f1f1f;" id="svginalert" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" preserveAspectRatio="xMidYMid meet"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/> </svg>
-                    <div class="alerttext">
-                        <h3 style="margin: 0; color: #1f1f1f;">New Version of PMC is Ready!</h3>
-                        <div style="color: #1f1f1f;">Please click "Update" to recieve new features/changes.</div>
+            if (GM_getValue("TakenTime", undefined) == undefined) {
+                const d = new Date();
+                let time = Math.round(d.getTime() / 36000);
+                GM_setValue("TakenTime", time)
+            }
+            const d = new Date();
+            let time = Math.round(d.getTime() / 36000);
+            if (time >= GM_getValue("TakenTime") + 10) {
+                $(/*html*/`
+                <div id="alertdialog">
+                    <div class= "alertcontents">
+                        <svg style="margin-left: 6px; fill: #1f1f1f;" id="svginalert" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" preserveAspectRatio="xMidYMid meet"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/> </svg>
+                        <div class="alerttext">
+                            <h3 style="margin: 0; color: #1f1f1f;">New Version of PMC is Ready!</h3>
+                            <div style="color: #1f1f1f;">Please click "Update" to recieve new features/changes.</div>
+                        </div>
                     </div>
+                    <div class="alertdiv">
+                        <a href="https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js"><button id="alertbutton"><span style="z-index: 4; position: relative; font-weight: bold; ">Update</span></button></a>
+                    </div>
+                    <style>
+                        #alertdialog {
+                            position: fixed;
+                            z-index: 999;
+                            right: 400px;
+                            top: 10px;
+                            display: flex;
+                            width: 42%;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-start;
+                            gap: 0.5rem;
+                            background-color: #00c3ff;
+                            padding: 1rem;
+                            height: 7%;
+                            border-radius: 8px;    
+                            box-shadow: 0px 5px 6px 0px rgba(166, 166, 166, 0.3);
+                            transition: 400ms ease-in-out;
+                        }
+                        .alertdiv {
+                            display: flex;
+                        }
+                        .alerttext {
+                            margin-left: 1.5rem;
+                        }
+                        .alertcontents {
+                            display: flex;
+                            align-items: center;
+                        }
+                        #alertbutton {
+                            background-color: #4fd6ff;
+                            color: #1f1f1f;
+                            font-weight: normal;
+                            border: 0;
+                            margin-left: 1.4rem;
+                            width: 10rem;
+                            height: 3.4rem;
+                            font-size: 31px;
+                            border-radius: 5px;
+                            transition: 400ms ease-in-out;
+                            box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.3);
+                        }
+                    </style>
                 </div>
-                <div class="alertdiv">
-                    <a href="https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js"><button id="alertbutton"><span style="z-index: 4; position: relative; font-weight: bold; ">Update</span></button></a>
-                </div>
-                <style>
-                    #alertdialog {
-                        position: fixed;
-                        z-index: 999;
-                        right: 400px;
-                        top: 10px;
-                        display: flex;
-                        width: 42%;
-                        flex-direction: row;
-                        align-items: center;
-                        justify-content: flex-start;
-                        gap: 0.5rem;
-                        background-color: #00c3ff;
-                        padding: 1rem;
-                        height: 7%;
-                        border-radius: 8px;    
-                        box-shadow: 0px 5px 6px 0px rgba(166, 166, 166, 0.3);
-                        transition: 400ms ease-in-out;
-                    }
-                    .alertdiv {
-                        display: flex;
-                    }
-                    .alerttext {
-                        margin-left: 1.5rem;
-                    }
-                    .alertcontents {
-                        display: flex;
-                        align-items: center;
-                    }
-                    #alertbutton {
-                        background-color: #4fd6ff;
-                        color: #1f1f1f;
-                        font-weight: normal;
-                        border: 0;
-                        margin-left: 1.4rem;
-                        width: 10rem;
-                        height: 3.4rem;
-                        font-size: 31px;
-                        border-radius: 5px;
-                        transition: 400ms ease-in-out;
-                        box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.3);
-                    }
-                </style>
-            </div>
-            `).prependTo('.dashboard-is-planner')
-            // hover colors for button
-            $('#alertbutton').hover(function() {
-                $('#alertbutton').css('background-color', '#7ae0ff');
-                $('#alertdialog').css('background-color', '#30A5EB');
-            }, function() {
-                $('#alertbutton').css('background-color', '#4fd6ff');
-                $('#alertdialog').css('background-color', '#00c3ff');
-            });
+                `).prependTo('.dashboard-is-planner')
+                // hover colors for button
+                $('#alertbutton').hover(function() {
+                    $('#alertbutton').css('background-color', '#7ae0ff');
+                    $('#alertdialog').css('background-color', '#30A5EB');
+                }, function() {
+                    $('#alertbutton').css('background-color', '#4fd6ff');
+                    $('#alertdialog').css('background-color', '#00c3ff');
+                });
+            }
         }
         
     });
