@@ -61,6 +61,7 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+        --sJGfW-iconColor: var(--hoverColor) !important;
         --cCGLM-color: var(--minortextColor) !important;
         --eqmZq-color: var(--minortextColor) !important;
         --eqmZq-background: var(--secondarybackgroundColor) !important;
@@ -121,7 +122,7 @@
         --dUOHu-primaryInverseColor: var(--minortextColor) !important;
         --enRcg-primaryInverseColor: var(--minortextColor) !important;
         --enRcg-brandColor: var(--minortextColor) !important;
-        --sJGfW-activeLabelColor: var(--buttonbackColor) !important;
+        --sJGfW-activeLabelColor: var(--iconColor) !important; /* may need to be CHNGED WATCH OUT */
         --sJGfW-activeIconColor: var(--buttonbackColor) !important;
         --dUOHu-brandColor: var(--minortextColor) !important; /* honestly no idea but the submit page on assignments is all weird cause of it for several stuff */
         --ic-brand-primary: var(--minorsideColor); /* hover on grades page */
@@ -161,11 +162,23 @@
         background: var(--backgroundColor);
         color: var(--textColor) !important;
     }
+    select {
+        color: var(--minortextColor) !important;
+    }
     #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk, .question .header .question_points_holder, .pages.show .page-title{
         color: var(--textColor) !important;
     }
-    .module-sequence-footer-button--previous .Button, .module-sequence-footer-button--next .Button{
-        background: var(--tertiarybackgroundColor)
+    .module-sequence-footer-button--previous .Button, .module-sequence-footer-button--next .Button {
+        background: var(--tertiarybackgroundColor);
+    }
+    .calendar .fc-head thead .fc-widget-header, #calendar-app .fc-other-month, #create_new_event_link, #minical .fc-other-month, #minical .fc-widget-content, #minical .fc-toolbar h2, #minical .fc-toolbar .h2 {
+        color: var(--minortextColor) !important;
+    }
+    .fc-state-default {
+        color: var(--hoverColor) !important;
+    }
+    #minical {
+        border-color: var(--hoverColor) !important;
     }
     #student-grades-show-all .Button {
         background: var(--buttonbackColor)
@@ -185,8 +198,8 @@
     .enRcg_bGBk.enRcg_bLsb {
         color: var(--minortextColor) !important;
     }
-    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs {
-        color: var(--textColor);
+    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs, .pages.show .course-title {
+        color: var(--textColor) !important;
     }
     .dUOHu_drOs .StickyButton-styles__layout {
         color: var(--iconColor)
