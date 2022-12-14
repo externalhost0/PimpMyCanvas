@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      0.2.3
+// @version      1.0.0
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -61,6 +61,8 @@
         --iconColor: ${colors.iconColor};
         --slimborderfixColor: ${colors.slimborderfixColor};
 
+
+        --MlJlv-textColor: var(--textColor) !important;
         --sJGfW-iconColor: var(--hoverColor) !important;
         --cCGLM-color: var(--minortextColor) !important;
         --eqmZq-color: var(--minortextColor) !important;
@@ -126,7 +128,7 @@
         --sJGfW-activeIconColor: var(--buttonbackColor) !important;
         --dUOHu-brandColor: var(--minortextColor) !important; /* honestly no idea but the submit page on assignments is all weird cause of it for several stuff */
         --ic-brand-primary: var(--minorsideColor); /* hover on grades page */
-        --ic-brand-global-nav-menu-item__badge-text: var(--iconColor);
+        --ic-brand-global-nav-menu-item__badge-text: var(--secondarybackgroundColor);
         --ic-brand-global-nav-ic-icon-svg-fill: var(--iconColor);
         --ic-brand-global-nav-menu-item__text-color: var(--iconColor);
         --feqxT-backgroundHover: var(--hoverColor) !important;
@@ -165,6 +167,9 @@
     select {
         color: var(--minortextColor) !important;
     }
+    #immersive_reader_mount_point > div > button > span > span > span:nth-child(1) > span > svg > g > g > g > path:nth-child(1) {
+        fill: var(--iconColor);
+    }
     #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk, .question .header .question_points_holder, .pages.show .page-title{
         color: var(--textColor) !important;
     }
@@ -176,6 +181,9 @@
     }
     .fc-state-default {
         color: var(--hoverColor) !important;
+    }
+    .dUOHu_drOs {
+        color: var(--textColor);
     }
     #minical {
         border-color: var(--hoverColor) !important;
@@ -198,14 +206,14 @@
     .enRcg_bGBk.enRcg_bLsb {
         color: var(--minortextColor) !important;
     }
-    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .dUOHu_drOs, .pages.show .course-title {
+    .btn, #right-side .right-side-list li a>i, [dir="ltr"] .bgKsu_blJt, .message-detail.conversations__message-detail .no-messages, .pages.show .course-title {
         color: var(--textColor) !important;
     }
     .dUOHu_drOs .StickyButton-styles__layout {
-        color: var(--iconColor)
+        color: var(--iconColor);
     }
     [dir="ltr"] .qBMHb_cwos.qBMHb_EMjX, [dir="ltr"] input[type].qBMHb_cwos.qBMHb_EMjX {
-        color: var(--textColor)
+        color: var(--textColor);
     }
     .ig-header .name {
         text-shadow: none !important;
@@ -279,6 +287,9 @@
     .btn.active:hover, .btn:hover {
         background: var(--hoverColor) !important;
         transition: ease-in-out 300ms;
+    }
+    [dir="ltr"] .StickyButton-styles__icon {
+        color: var(--iconColor) !important;
     }
     .btn, .fOyUs_bGBk.eIQkd_bGBk .fwfoD_bGBk.fwfoD_fsuY.fwfoD_EMjX {
         background: var(--tertiarybackgroundColor); /* background of buttons but also some text */
@@ -382,7 +393,7 @@
         --faJyW-background: #2D3B45;
         --faJyW-borderColor: #2D3B45;
         --faJyW-checkedBackground: #127A1B;
-        --faJyW-checkedIconColor: #127A1B;
+        --faJyW-checkedIconColor: #127A1B !important;
         --faJyW-focusOutlineColor: 0 !important;
     }
     .pmcControls {
@@ -417,77 +428,13 @@
         float: right;
     }
     #pmcGradientText {
-        color: var(--textColor);
-        border-radius: 10px;
-        transition: ease-in-out 300ms;
         font-size: 20px;
-
-    }
-    #pmcGradientSwitch {
-        height: 52px;
-        width: 242px;
-        padding: 6px;
-        /* animation: gradient 5s ease infinite; */
-        transition: ease-out 200ms;
-        background: var(--iconColor);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 13px;
-        border: none;
-        outline: none;
-        position: relative;
-        z-index: 0;
-        touch-action: manipulation;
-        -webkit-user-select: none;
-    } 
-
-    /* #pmcGradientSwitch:hover {
-        box-shadow: 0px 0px 8px 2px green;
-    } */
-
-    @keyframes glowing {
-        0% {
-            background-position: 0 0;
-        }
-        50% {
-            background-position: 100% 0;
-        }
-        100% {
-            background-position: 0 0;
-        }
-    }
-    #pmcGradientSwitch:before {
-        content: "";
-        background: var(--sideColorforButton);
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        background-size: 400%;
-        z-index: -1;
-        filter: blur(4px);
-        -webkit-filter: blur(4px);
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: glowing 10s linear infinite;
-        transition: opacity 0.3s ease-in-out;
-        border-radius: 10px;
-    }
-    #pmcGradientSwitch:after {
-        z-index: -1;
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: var(--iconColor);
-        left: 0;
-        top: 0;
-        border-radius: 10px;
     }
 
     #customGradientdiv {
         display: flex;
-        align-items: stretch;
+        align-items: center;
+        gap: 2px;
     }
     #customGradient {
         margin-bottom: 0;
@@ -549,11 +496,30 @@
     .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix { /* The title text in Modal */
         padding-left: 20px;
     }
-    #themebutton {
-
+    #themeButton {
+        width: 240px;
+        height: 60px;
+        font-size: 25px;
     }
     #coolorDiv {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .standardButton {
+        background: white;
+        color: black;
+        border: 0;
+        border-radius: 5px;
+    }
+    .standardButton:hover {
+        background: #212121;
+        color: white;
+        border: 2px solid white;
+    }
+    #pmcGradientSwitch {
+        width: 138px;
+        height: 61px;
     }
 
     #coolorButton {
@@ -562,7 +528,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 80px;
+        height: 61px;
         width: 160px;
         border-radius: 6px;
         transition: 200ms ease-out;
@@ -575,11 +541,25 @@
     #extraOptionsDiv {
         display: flex;
         flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        align-items: flex-start;
+        align-items: center;
     }
-
+    #pmcResetButton {
+        width: 131px;
+        height: 37px;
+        place-self: flex-start;
+    }
+    #pmcHelpButton {
+        width: 60px;
+        height: 37px;
+    }
+    #customGradButton {
+        height: 38px;
+    }
+    #innercoolorDiv {
+        display:flex;
+        margin: 10px;
+        gap: 5px;
+    }
 
     /* #main {
         background: url(C:\Users\hayde\Downloads\) no-repeat center center fixed #000; 
@@ -614,7 +594,12 @@
                 $('<span id="pmctext">Show PMC Menu</span>').appendTo('#pmcspan');
 
                 $('<hr>').appendTo('#pmcControldiv');
-                $('<button id="themeButton">Theme Library</button>').appendTo('#pmcControldiv');
+                $(/*html*/`
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <button id="themeButton" class="standardButton">Theme Library</button>
+                    <div>
+                `).appendTo('#pmcControldiv')
+                $('<hr>').appendTo('#pmcControldiv');
 
                 // PMC Controls
                 $('<div id="pmcControlBackgroundColor" class="pmcControls"/>').appendTo('#pmcControldiv');
@@ -656,25 +641,34 @@
 
                 $(/*html*/`
                 <div id="extraOptionsDiv">
-                    <button id="pmcGradientSwitch" class="pmcSettingsInput">
-                        <span id="pmcGradientText">${GM_getValue("sT", "Switch to Gradient")}</span>
-                    </button>
-                    <br>
+                    <h4>Custom Gradient Settings</h4>
+
                     <div id="coolorDiv">
-                        <a href="https://coolors.co/palettes/trending" target="_blank" style="text-decoration: none;">
-                            <button id ="coolorButton" title="Links to coolors.co, where you can find gradients to use.">
-                                <span>Click here to go to</span>
-                                <svg width="128" height="21">       
-                                    <image id="coolorSVG" xlink:href="https://coolors.co/assets/img/logo.svg"width="128" height="21"/>    
-                                </svg>
+                        <div id="innercoolorDiv">
+                            <button id="pmcGradientSwitch" class="standardButton">
+                                <span id="pmcGradientText">${GM_getValue("sT", "Switch to Gradient")}</span>
                             </button>
+                            <a href="https://coolors.co/palettes/trending" target="_blank" style="text-decoration: none;">
+                                <button id ="coolorButton" title="Links to coolors.co, where you can find gradients to use.">
+                                    <span>Click here to go to</span>
+                                    <svg width="128" height="21">       
+                                        <image id="coolorSVG" xlink:href="https://coolors.co/assets/img/logo.svg"width="128" height="21"/>    
+                                    </svg>
+                                </button>
+                            </a>
+                        </div>
+                        <div id="customGradientdiv">
+                            <input type="text" placeholder="URL from coolors.co" autocomplete="off" id="customGradient"/>
+                            <button id="customGradButton" class="standardButton">Submit</button>
+                        </div>
+                    </div>
+                    <hr style="width: 100%;">
+                    <div id="innercoolerDiv">
+                        <button id="pmcResetButton" class="standardButton">Reset to Default</button>
+                        <a href="https://github.com/ExternalHost0/PimpMyCanvas/blob/master/README.md" target="_blank" style="text-decoration: none;">
+                            <button id="pmcHelpButton" class="standardButton">Help?</button>
                         </a>
                     </div>
-                    <div id="customGradientdiv" class="pmcSettingsInput">
-                        <input type="text" placeholder="URL from coolors.co" autocomplete="off" id="customGradient"/>
-                        <button id="customGradButton">Submit</button>
-                    </div>
-                    <button id="pmcResetButton" class="">Reset to Default</button>
                 </div>
                 `).appendTo('#pmcControldiv')
                 // Some effects for buttons in PMC
@@ -687,119 +681,114 @@
                     $("#coolorButton span").css('color', 'rgb(0, 102, 255)')
                     $("#coolorSVG").css('filter', 'none')
                 });
-
-
                 // $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');  The export button has no use as of now
             }
         }
     }, 500);
 
-
-
-    // UPDATE WARNING FEATURE
-    $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
-        let isClickedUpdate = false;
-        // first time using, should never trigger again unless reinstalled or storage is wiped
-        if (GM_getValue("Github Current Commit", undefined) == undefined) {
-            GM_setValue("Github Current Commit", page[0].sha)
-            GM_setValue("Current Script Version", GM.info.script.version)
-        }
-        // when the script is updated
-        if (GM.info.script.version > GM_getValue("Current Script Version")) {
-            GM_setValue("Current Script Version", GM.info.script.version)
-            GM_setValue("Github Current Commit", page[0].sha)
-            GM_setValue("TakenTime", undefined)
-        }
-        // new commit available
-        if (GM_getValue("Github Current Commit") != page[0].sha) {
-            if (GM_getValue("TakenTime", undefined) == undefined) {
-                const d = new Date();
-                let time = Math.round(d.getTime() / 36000);
-                GM_setValue("TakenTime", time)
-            }
-            const d = new Date();
-            let time = Math.round(d.getTime() / 36000);
-            if (time >= GM_getValue("TakenTime") + 5) {
-                $(/*html*/`
-                <div id="alertdialog">
-                    <div class= "alertcontents">
-                        <svg style="margin-left: 6px; fill: #1f1f1f;" id="svginalert" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" preserveAspectRatio="xMidYMid meet"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/> </svg>
-                        <div class="alerttext">
-                            <h3 style="margin: 0; color: #1f1f1f;">New Version of PMC is Ready!</h3>
-                            <div style="color: #1f1f1f;">Please click "Update" to recieve new features/changes.</div>
-                        </div>
-                    </div>
-                    <div class="alertdiv">
-                        <a href="https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js"><button id="alertbutton"><span style="z-index: 4; position: relative; font-weight: bold; ">Update</span></button></a>
-                    </div>
-                    <style>
-                        #alertdialog {
-                            position: fixed;
-                            z-index: 999;
-                            left: 50%;
-                            top: 10px;
-                            transform: translate(-50%, 0%);
-                            display: flex;
-                            width: 42%;
-                            flex-direction: row;
-                            align-items: center;
-                            justify-content: center;
-                            gap: 0.5rem;
-                            background-color: #00c3ff;
-                            padding: 1rem;
-                            height: 7%;
-                            border-radius: 8px;    
-                            box-shadow: 0px 5px 6px 0px rgba(166, 166, 166, 0.3);
-                            transition: 400ms ease-in-out;
-                        }
-                        .alertdiv {
-                            display: flex;
-                        }
-                        .alerttext {
-                            margin-left: 1.5rem;
-                        }
-                        .alertcontents {
-                            display: flex;
-                            align-items: center;
-                        }
-                        #alertbutton {
-                            background-color: #4fd6ff;
-                            color: #1f1f1f;
-                            font-weight: normal;
-                            border: 0;
-                            margin-left: 1.4rem;
-                            width: 10rem;
-                            height: 3.4rem;
-                            font-size: 31px;
-                            border-radius: 5px;
-                            transition: 400ms ease-in-out;
-                            box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.3);
-                        }
-                    </style>
-                </div>
-                `).prependTo('.dashboard-is-planner')
-                // hover colors for button
-                $('#alertbutton').click(function() {
-                    $('#alertbutton').css('background-color', '#36F57D');
-                    $('#alertdialog').css('background-color', '#20D4BE');
-                    $('#alertbutton span').text("Thanks!");
-                    isClickedUpdate = true;
-                });
-                $('#alertbutton').hover(function() {
-                    if (isClickedUpdate == false) {
-                        $('#alertbutton').css('background-color', '#7ae0ff');
-                        $('#alertdialog').css('background-color', '#30A5EB');
-                    }
-                }, function() {
-                    if (isClickedUpdate == false) {
-                        $('#alertbutton').css('background-color', '#4fd6ff');
-                        $('#alertdialog').css('background-color', '#00c3ff');
-                    }
-                });
-            }
-        }
-        
-    });
+    // // UPDATE WARNING FEATURE (CURRENTLY NOT IN USE)
+    // $.get("https://api.github.com/repos/ExternalHost0/PimpMyCanvas/commits?path=PimpMyCanvas.user.js", function(page) {
+    //     let isClickedUpdate = false;
+    //     // first time using, should never trigger again unless reinstalled or storage is wiped
+    //     if (GM_getValue("Github Current Commit", undefined) == undefined) {
+    //         GM_setValue("Github Current Commit", page[0].sha)
+    //         GM_setValue("Current Script Version", GM.info.script.version)
+    //     }
+    //     // when the script is updated
+    //     if (GM.info.script.version > GM_getValue("Current Script Version")) {
+    //         GM_setValue("Current Script Version", GM.info.script.version)
+    //         GM_setValue("Github Current Commit", page[0].sha)
+    //         GM_setValue("TakenTime", undefined)
+    //     }
+    //     // new commit available
+    //     if (GM_getValue("Github Current Commit") != page[0].sha) {
+    //         if (GM_getValue("TakenTime", undefined) == undefined) {
+    //             const d = new Date();
+    //             let time = Math.round(d.getTime() / 36000);
+    //             GM_setValue("TakenTime", time)
+    //         }
+    //         const d = new Date();
+    //         let time = Math.round(d.getTime() / 36000);
+    //         if (time >= GM_getValue("TakenTime") + 5) {
+    //             $(/*html*/`
+    //             <div id="alertdialog">
+    //                 <div class= "alertcontents">
+    //                     <svg style="margin-left: 6px; fill: #1f1f1f;" id="svginalert" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" preserveAspectRatio="xMidYMid meet"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/> </svg>
+    //                     <div class="alerttext">
+    //                         <h3 style="margin: 0; color: #1f1f1f;">New Version of PMC is Ready!</h3>
+    //                         <div style="color: #1f1f1f;">Please click "Update" to recieve new features/changes.</div>
+    //                     </div>
+    //                 </div>
+    //                 <div class="alertdiv">
+    //                     <a href="https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js"><button id="alertbutton"><span style="z-index: 4; position: relative; font-weight: bold; ">Update</span></button></a>
+    //                 </div>
+    //                 <style>
+    //                     #alertdialog {
+    //                         position: fixed;
+    //                         z-index: 999;
+    //                         left: 50%;
+    //                         top: 10px;
+    //                         transform: translate(-50%, 0%);
+    //                         display: flex;
+    //                         width: 42%;
+    //                         flex-direction: row;
+    //                         align-items: center;
+    //                         justify-content: center;
+    //                         gap: 0.5rem;
+    //                         background-color: #00c3ff;
+    //                         padding: 1rem;
+    //                         height: 7%;
+    //                         border-radius: 8px;    
+    //                         box-shadow: 0px 5px 6px 0px rgba(166, 166, 166, 0.3);
+    //                         transition: 400ms ease-in-out;
+    //                     }
+    //                     .alertdiv {
+    //                         display: flex;
+    //                     }
+    //                     .alerttext {
+    //                         margin-left: 1.5rem;
+    //                     }
+    //                     .alertcontents {
+    //                         display: flex;
+    //                         align-items: center;
+    //                     }
+    //                     #alertbutton {
+    //                         background-color: #4fd6ff;
+    //                         color: #1f1f1f;
+    //                         font-weight: normal;
+    //                         border: 0;
+    //                         margin-left: 1.4rem;
+    //                         width: 10rem;
+    //                         height: 3.4rem;
+    //                         font-size: 31px;
+    //                         border-radius: 5px;
+    //                         transition: 400ms ease-in-out;
+    //                         box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.3);
+    //                     }
+    //                 </style>
+    //             </div>
+    //             `).prependTo('.dashboard-is-planner')
+    //             // hover colors for button
+    //             $('#alertbutton').click(function() {
+    //                 $('#alertbutton').css('background-color', '#36F57D');
+    //                 $('#alertdialog').css('background-color', '#20D4BE');
+    //                 $('#alertbutton span').text("Thanks!");
+    //                 isClickedUpdate = true;
+    //             });
+    //             $('#alertbutton').hover(function() {
+    //                 if (isClickedUpdate == false) {
+    //                     $('#alertbutton').css('background-color', '#7ae0ff');
+    //                     $('#alertdialog').css('background-color', '#30A5EB');
+    //                 }
+    //             }, function() {
+    //                 if (isClickedUpdate == false) {
+    //                     $('#alertbutton').css('background-color', '#4fd6ff');
+    //                     $('#alertdialog').css('background-color', '#00c3ff');
+    //                 }
+    //             });
+    //         }
+    //     }
+    // });
 
     $(document).ready(() => {
         $('<div id="dialog">').appendTo('body');
