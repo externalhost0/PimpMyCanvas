@@ -1,9 +1,9 @@
 # Pimp My Canvas
 ![](https://img.shields.io/github/repo-size/ExternalHost0/PimpMyCanvas?color=006eff&style=flat-square) ![](https://img.shields.io/github/last-commit/ExternalHost0/PimpMyCanvas?color=006eff&style=flat-square)
 
-Customize the appearance of Canvas LMS (Learning Management System) with ease. PMC (Pimp My Canvas) allows for custom colors to be assigned, overwriting the elements of Canvas as well as the ability to import palletes to be used in themes.
+# [Click HERE to install the script!](https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js)
 
-## [Click HERE to install the script!](https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js)
+Customize the appearance of Canvas LMS (Learning Management System) with ease. PMC (Pimp My Canvas) allows for custom colors to be assigned, overwriting the elements of Canvas as well as the ability to import palletes to be used in themes.
 ___
 # Usage
 
