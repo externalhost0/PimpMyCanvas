@@ -21,18 +21,18 @@
     'use strict';
 
     const defaultColors = {
-        backgroundColor: "#faebd7",
-        sideColor: "#ff6536",
-        sideColorGradient: "linear-gradient(0deg, #ff5024, #e0d4a6, #f57e42)",
-        minorsideColor: "#d43809",
-        newNotifColor: "#ffae0d",
+        backgroundColor: "#ffffff",
+        sideColor: "#394B58",
+        sideColorGradient: "linear-gradient(0deg, #00296b, #003f88, #00509d, #fdc500, #ffd500)",
+        minorsideColor: "#3055bb",
+        newNotifColor: "#ffb711",
         dangerColor: "#ff0d41",
         textColor: "#03081f",
         minortextColor: "#1c1b26",
         buttonbackColor: "#ffffff",
-        secondarybackgroundColor: "#f7c88b",
-        tertiarybackgroundColor: "#faf0e3",
-        hoverColor: "#fa9a1e",
+        secondarybackgroundColor: "#ebedee",
+        tertiarybackgroundColor: "#ffffff",
+        hoverColor: "#739df2",
         iconColor: "#ffffff",
         slimborderfixColor: "#c7cdd1",
     }
@@ -128,7 +128,7 @@
         --sJGfW-activeIconColor: var(--buttonbackColor) !important;
         --dUOHu-brandColor: var(--minortextColor) !important; /* honestly no idea but the submit page on assignments is all weird cause of it for several stuff */
         --ic-brand-primary: var(--minorsideColor); /* hover on grades page */
-        --ic-brand-global-nav-menu-item__badge-text: var(--secondarybackgroundColor);
+        --ic-brand-global-nav-menu-item__badge-text: var(--iconColor);
         --ic-brand-global-nav-ic-icon-svg-fill: var(--iconColor);
         --ic-brand-global-nav-menu-item__text-color: var(--iconColor);
         --feqxT-backgroundHover: var(--hoverColor) !important;
@@ -168,7 +168,7 @@
         color: var(--minortextColor) !important;
     }
     #immersive_reader_mount_point > div > button > span > span > span:nth-child(1) > span > svg > g > g > g > path:nth-child(1) {
-        fill: var(--iconColor);
+        fill: var(--textColor);
     }
     #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk, .question .header .question_points_holder, .pages.show .page-title{
         color: var(--textColor) !important;
@@ -220,6 +220,9 @@
     }
     .ig-list .ig-row a.ig-title, #right-side .right-side-list li p, .fCrpb_egrg, .Button, #grades_summary th.title .context {
         color: var(--minortextColor) !important;
+    }
+    .title a {
+        color: var(--minorsideColor) !important;
     }
     .list-view a.active {
         color: var(--minorsideColor);
@@ -507,7 +510,7 @@
         align-items: center;
     }
     .standardButton {
-        background: white;
+        background: #f4f4f4;
         color: black;
         border: 0;
         border-radius: 5px;
@@ -641,7 +644,7 @@
 
                 $(/*html*/`
                 <div id="extraOptionsDiv">
-                    <h4>Custom Gradient Settings</h4>
+                    <h4>Custom Gradient Settings:</h4>
 
                     <div id="coolorDiv">
                         <div id="innercoolorDiv">
@@ -675,9 +678,9 @@
                 $('#coolorButton').hover(function() {
                     $("#coolorButton").css('background-color', 'rgb(0, 102, 255)')
                     $("#coolorButton span").css('color', 'white')
-                    $("#coolorSVG").css('filter', 'brightness(5)')
+                    $("#coolorSVG").css('filter', 'brightness(5) saturate(0.01)')
                 }, function() {
-                    $("#coolorButton").css('background-color', 'white')
+                    $("#coolorButton").css('background-color', '#f4f4f4')
                     $("#coolorButton span").css('color', 'rgb(0, 102, 255)')
                     $("#coolorSVG").css('filter', 'none')
                 });

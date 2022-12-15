@@ -78,5 +78,25 @@
         "iconColor":"#ffffff",
         "slimborderfixColor":"#c7cdd1"
       }
+    },
+    {
+      "name": "Original Orange",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/originalorange.png",
+      "colors": {
+        "backgroundColor": "#faebd7",
+        "sideColor": "#ff6536",
+        "sideColorGradient": "linear-gradient(0deg, #ff5024, #e0d4a6, #f57e42)",
+        "minorsideColor": "#d43809",
+        "newNotifColor": "#ffae0d",
+        "dangerColor": "#ff0d41",
+        "textColor": "#03081f",
+        "minortextColor": "#1c1b26",
+        "buttonbackColor": "#ffffff",
+        "secondarybackgroundColor": "#f7c88b",
+        "tertiarybackgroundColor": "#faf0e3",
+        "hoverColor": "#fa9a1e",
+        "iconColor": "#ffffff",
+        "slimborderfixColor": "#c7cdd1"
+      }
     }
 ]
