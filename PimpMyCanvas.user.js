@@ -518,13 +518,12 @@
     .standardButton:hover {
         background: #212121;
         color: white;
-        border: 2px solid white;
+        border: 0;
     }
     #pmcGradientSwitch {
         width: 138px;
         height: 61px;
     }
-
     #coolorButton {
         border: 0;
         display: flex;
@@ -563,18 +562,17 @@
         margin: 10px;
         gap: 5px;
     }
+    #backgroundButton {
+        width: 208px;
+        height: 50px;
+        font-size: 17px;
+    }
 
-    /* #main {
-        background: url(C:\Users\hayde\Downloads\) no-repeat center center fixed #000; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background-repeat: no-repeat;
-    } */
+    #main {
+
+    }
 
     `)
-
     //is clicked for theming button
     $("body").on("click", "#themeButton", () => {
         $("#dialog").dialog("open");
@@ -595,15 +593,20 @@
                 $('<span class="faJyW_bGBk" id="pmcspan">').appendTo('#pmcdiv');
                 $('<span id="pmccheck" class="faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw" aria-hidden="true"><span class="faJyW_dnnz"><span class="faJyW_cMpH"><svg name="IconX" viewBox="0 0 1920 1920" rotate="0" width="1em" height="1em" aria-hidden="true" role="presentation" focusable="false" class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk faJyW_eoCh" style="width: 1em; height: 1em;"><g role="presentation"><path class="innerappend" d="M1743.8579 267.012456L710.746654 1300.1237 176.005086 765.382131 0 941.387217 710.746654 1652.25843 1919.98754 443.142104z" fill-rule="nonzero" stroke="none" stroke-width="1"></path></g></svg></span></span></span>').appendTo('#pmcspan');
                 $('<span id="pmctext">Show PMC Menu</span>').appendTo('#pmcspan');
-
                 $('<hr>').appendTo('#pmcControldiv');
                 $(/*html*/`
-                    <div style="display: flex; align-items: center; justify-content: center;">
+                    <div style="display: flex; align-items: center; justify-content: center; margin:10px;">
                         <button id="themeButton" class="standardButton">Theme Library</button>
-                    <div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <!-- <button id="backgroundButton" class="standardButton">Import Background Image</button> -->
+
+                        <input id="backgroundInput" type="file" accept="image/*" hidden>
+                            <button id="backgroundButton" class="standardButton">Import Background Image</button>
+                        </input>
+                    </div>
                 `).appendTo('#pmcControldiv')
                 $('<hr>').appendTo('#pmcControldiv');
-
                 // PMC Controls
                 $('<div id="pmcControlBackgroundColor" class="pmcControls"/>').appendTo('#pmcControldiv');
                 $('<span id="pmcControlText">Background Color</span>').appendTo('#pmcControlBackgroundColor');
@@ -684,6 +687,19 @@
                     $("#coolorButton span").css('color', 'rgb(0, 102, 255)')
                     $("#coolorSVG").css('filter', 'none')
                 });
+
+                // background image functionality
+                var uploadedimage = "";
+                var input = document.querySelector("#backgroundInput")
+                input.addEventListener("change", function() {
+                    const reader = new FileReader()
+                    reader.addEventListener("load", () => {
+                        uploadedimage = reader.result;
+                        document.querySelector("#main").style.background = `url(${uploadedimage})`
+                    })
+                    reader.readAsDataURL(this.files[0]);
+                })
+                console.log($("#backgroundInput").value);
                 // $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');  The export button has no use as of now
             }
         }
@@ -847,7 +863,12 @@
             });
         });
     });
-    
+
+    // so that file Input is triggered for background image
+    $("body").on("click", "#backgroundButton", () => {
+        $('#backgroundInput').click();
+    })
+
     //exports all colors in simple text file
     $("body").on("click", "#pmcExportButton", () => {
         download(JSON.stringify(colors), "userColors.json", "text/plain")
