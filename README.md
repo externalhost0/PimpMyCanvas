@@ -24,6 +24,7 @@ If you have any trouble with installation, refer to the video below.
 ___
 ## Theme Library
 The theme library button will open up an assortment of available themes that you can select. More themes are planned to be added.
+Once a theme is selected its colors can also be changed but are not saved to the theme itself.
 ___
 ## Custom Pallete Feature
 Using Coolors, a free to use website, you can make your own gradients by simply copying the url of any pallete and pasting it into PMC.
