@@ -844,7 +844,6 @@
 
         // background custom image on start page
         $('<div id="backMy">').appendTo('body');
-        console.log("hi")
         let theImage = localStorage.getItem("imgData")
         theImage = "url(" + theImage + ")"
         $('#backMy').css("backgroundImage", theImage)
