@@ -568,8 +568,11 @@
         font-size: 17px;
     }
 
-    #main {
-
+    #backMy {
+        position: fixed;
+        inset: 0;
+        background-size: cover;
+        opacity: 70%;
     }
 
     `)
@@ -693,13 +696,21 @@
                 var input = document.querySelector("#backgroundInput")
                 input.addEventListener("change", function() {
                     const reader = new FileReader()
+                    const bM = document.getElementById('backMy')
                     reader.addEventListener("load", () => {
                         uploadedimage = reader.result;
-                        document.querySelector("#main").style.background = `url(${uploadedimage})`
+                        if (uploadedimage.length > 5000) {
+                            alert("Can not use images larger than 5 MB!")
+                            return
+                        }
+                        bM.style.backgroundImage = `url(${uploadedimage})`
+                        console.log(uploadedimage)
+                        localStorage.setItem("imgData", uploadedimage)
                     })
                     reader.readAsDataURL(this.files[0]);
+                    
                 })
-                console.log($("#backgroundInput").value);
+
                 // $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');  The export button has no use as of now
             }
         }
@@ -830,6 +841,16 @@
             }
         });
         $('<div class="containerTheme">').appendTo('#dialog');
+
+        // background custom image on start page
+        $('<div id="backMy">').appendTo('body');
+        console.log("hi")
+        let theImage = localStorage.getItem("imgData")
+        theImage = "url(" + theImage + ")"
+        $('#backMy').css("backgroundImage", theImage)
+        // var dataImage = GM_getValue('imgData');
+        // const backConst = document.getElementById('backMy');
+        // backConst.src = "data:image/png;base64," + dataImage;
 
         // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
