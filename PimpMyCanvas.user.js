@@ -699,8 +699,9 @@
                     const bM = document.getElementById('backMy')
                     reader.addEventListener("load", () => {
                         uploadedimage = reader.result;
-                        if (uploadedimage.length > 5000) {
-                            alert("Can not use images larger than 5 MB!")
+                        console.log(uploadedimage.length)
+                        if (uploadedimage.length > 5238000) {
+                            alert("Can not use images larger than 3.5 MB!")
                             return
                         }
                         bM.style.backgroundImage = `url(${uploadedimage})`
@@ -708,7 +709,6 @@
                         localStorage.setItem("imgData", uploadedimage)
                     })
                     reader.readAsDataURL(this.files[0]);
-                    
                 })
 
                 // $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');  The export button has no use as of now
@@ -967,6 +967,8 @@
         colors.dangerColor = defaultColors.dangerColor;
         colors.newNotifColor = defaultColors.newNotifColor;
         colors.buttonbackColor = defaultColors.buttonbackColor;
+        localStorage.removeItem("imgData")
+        $('#backMy').css("backgroundImage", "")
     });
 
     setInterval(() => {
