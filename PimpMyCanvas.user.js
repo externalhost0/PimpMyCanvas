@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      1.2.1.1
+// @version      1.2.1.2
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -856,7 +856,11 @@
         $('<div class="containerTheme">').appendTo('#dialog');
 
         // background custom image on start page
-        $('<div id="backMy">').appendTo('body');
+        
+        if ($('.hidden-phone').length) {
+            $('<div id="backMy">').appendTo('body');
+        }
+        
         let theImage = localStorage.getItem("imgData")
         theImage = "url(" + theImage + ")"
         $('#backMy').css("backgroundImage", theImage)
@@ -898,7 +902,6 @@
     });
 
     $("body").on("input", "#opacityslider", function() {
-        console.log($(this).val())
         $('#backMy').css("opacity", $(this).val() + "%")
         GM_setValue("backgroundOpacity", $(this).val() / 100)
     })
