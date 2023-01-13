@@ -62,6 +62,9 @@
         --slimborderfixColor: ${colors.slimborderfixColor};
 
 
+        
+        --ic-brand-font-color-dark-lightened-15: var(--minortextColor) !important;
+        --ic-brand-font-color-dark-lightened-30: var(--textColor) !important;
         --MlJlv-textColor: var(--textColor) !important;
         --sJGfW-iconColor: var(--hoverColor) !important;
         --cCGLM-color: var(--minortextColor) !important;
@@ -229,6 +232,9 @@
     }
     .Button.Button--primary:hover {
         background: var(--hoverColor) !important;
+    }
+    .ic-DashboardCard__action {
+        color: var(--hoverColor) !important;
     }
 
     .ui-dialog .ui-dialog-titlebar.ui-widget-header, .ui-dialog .ui-dialog-title{
@@ -572,7 +578,7 @@
         position: fixed;
         inset: 0;
         background-size: cover;
-        opacity: 70%;
+        opacity: 40%;
     }
 
     `)
@@ -601,12 +607,11 @@
                     <div style="display: flex; align-items: center; justify-content: center; margin:10px;">
                         <button id="themeButton" class="standardButton">Theme Library</button>
                     </div>
-                    <div style="display: flex; align-items: center; justify-content: center;">
+                    <div id="contexMain" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
                         <!-- <button id="backgroundButton" class="standardButton">Import Background Image</button> -->
-
                         <input id="backgroundInput" type="file" accept="image/*" hidden>
                             <button id="backgroundButton" class="standardButton">Import Background Image</button>
-                        </input>
+                        </input>                        
                     </div>
                 `).appendTo('#pmcControldiv')
                 $('<hr>').appendTo('#pmcControldiv');
@@ -705,11 +710,13 @@
                             return
                         }
                         bM.style.backgroundImage = `url(${uploadedimage})`
-                        console.log(uploadedimage)
                         localStorage.setItem("imgData", uploadedimage)
+                        GM_setValue("usingBack", true)
+                        
                     })
                     reader.readAsDataURL(this.files[0]);
                 })
+
 
                 // $('<button id="pmcExportButton" class="">Export Colors</button>').appendTo('#pmcControldiv');  The export button has no use as of now
             }
@@ -847,9 +854,14 @@
         let theImage = localStorage.getItem("imgData")
         theImage = "url(" + theImage + ")"
         $('#backMy').css("backgroundImage", theImage)
-        // var dataImage = GM_getValue('imgData');
-        // const backConst = document.getElementById('backMy');
-        // backConst.src = "data:image/png;base64," + dataImage;
+        $('#backMy').css("opacity", GM_getValue("backgroundOpacity", "25"))
+
+        var tet = GM_getValue("backgroundOpacity", "25%")
+        if (GM_getValue("usingBack", false) == true) {
+            $(/*html*/`
+            <input id="opacityslider" title="Background Opacity" type="range" value="${tet * 100}" min="0" max="100"/>
+            `).appendTo("#contexMain");
+        }
 
         // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
@@ -883,6 +895,18 @@
             });
         });
     });
+
+    $("body").on("input", "#opacityslider", function() {
+        console.log($(this).val())
+        $('#backMy').css("opacity", $(this).val() + "%")
+        GM_setValue("backgroundOpacity", $(this).val() / 100)
+    })
+
+    // $('#opacityslider').on("input", function() {
+    //     console.log($(this).val())
+    //     $('#backMy').css("opacity", $(this).val() + "%")
+    //     GM_setValue("backgroundOpacity", $(this).val())
+    // })
 
     // so that file Input is triggered for background image
     $("body").on("click", "#backgroundButton", () => {
@@ -935,7 +959,6 @@
     // On click of menu, PMC opens
     // function is for button animation
     $("body").on("click", "#pmccheck", () => {
-        console.log(isHidden)
         if (isHidden){
             isHidden = false
             $("#pmccheck").attr('class', 'faJyW_cSXm faJyW_cjfS faJyW_cVYB faJyW_bYta faJyW_doqw');
