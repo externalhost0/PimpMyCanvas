@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PimpMyCanvas
 // @namespace    http://tampermonkey.net/
-// @version      1.2.1
+// @version      1.2.1.1
 // @downloadURL  https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @updateURL    https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js
 // @description  Changes the color of Canvas LMS
@@ -614,6 +614,12 @@
                         </input>                        
                     </div>
                 `).appendTo('#pmcControldiv')
+                var tet = GM_getValue("backgroundOpacity", "25%")
+                if (GM_getValue("usingBack", false) == true) {
+                    $(/*html*/`
+                    <input id="opacityslider" title="Background Opacity" type="range" value="${tet * 100}" min="0" max="100"/>
+                    `).appendTo("#contexMain");
+                }
                 $('<hr>').appendTo('#pmcControldiv');
                 // PMC Controls
                 $('<div id="pmcControlBackgroundColor" class="pmcControls"/>').appendTo('#pmcControldiv');
@@ -856,12 +862,7 @@
         $('#backMy').css("backgroundImage", theImage)
         $('#backMy').css("opacity", GM_getValue("backgroundOpacity", "25"))
 
-        var tet = GM_getValue("backgroundOpacity", "25%")
-        if (GM_getValue("usingBack", false) == true) {
-            $(/*html*/`
-            <input id="opacityslider" title="Background Opacity" type="range" value="${tet * 100}" min="0" max="100"/>
-            `).appendTo("#contexMain");
-        }
+
 
         // the unmanaged branch is currently where I am storing the themes and their respective images
         $.getJSON("https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/includedthemes.json", function(data) {
