@@ -98,5 +98,25 @@
         "iconColor": "#ffffff",
         "slimborderfixColor": "#c7cdd1"
       }
+    }, 
+    {
+      "name": "Justin's Theme",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/originalorange.png",
+      "colors": {
+        "backgroundColor": "#f5ffff",
+        "sideColor": "#38ffcd",
+        "sideColorGradient": "linear-gradient(0deg, #7400b8, #6930c3, #5e60ce, #5390d9, #4ea8de, #48bfe3, #56cfe1, #64dfdf, #72efdd, #80ffdb)",
+        "minorsideColor": "#00dbd8",
+        "newNotifColor": "#ffae0d",
+        "dangerColor": "#ff0d41",
+        "textColor": "#666bff",
+        "minortextColor": "#000000",
+        "buttonbackColor": "#ffffff",
+        "secondarybackgroundColor": "#d6f3ff",
+        "tertiarybackgroundColor": "#d6fffa",
+        "hoverColor": "#bdd1ff",
+        "iconColor": "#ffffff",
+        "slimborderfixColor": "#c7cdd1"
+      }
     }
 ]
