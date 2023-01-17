@@ -101,7 +101,7 @@
     }, 
     {
       "name": "Justin's Theme",
-      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/originalorange.png",
+      "img": "https://raw.githubusercontent.com/ExternalHost0/PimpMyCanvas/unmanaged/images/themeimages/justintheme.png",
       "colors": {
         "backgroundColor": "#f5ffff",
         "sideColor": "#38ffcd",
@@ -109,7 +109,7 @@
         "minorsideColor": "#00dbd8",
         "newNotifColor": "#ffae0d",
         "dangerColor": "#ff0d41",
-        "textColor": "#666bff",
+        "textColor": "#363878",
         "minortextColor": "#000000",
         "buttonbackColor": "#ffffff",
         "secondarybackgroundColor": "#d6f3ff",
