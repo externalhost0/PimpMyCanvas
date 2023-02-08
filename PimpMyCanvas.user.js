@@ -62,7 +62,12 @@
         --slimborderfixColor: ${colors.slimborderfixColor};
 
 
-        
+        --dUOHu-primaryColor: var(--minortextColor) !important;
+        --enRcg-primaryColor: var(--minortextColor) !important;
+        --fOyUs-color: var(--minortextColor) !important;
+        --dEBmf-color: var(--minortextColor) !important;
+        --ccWIh-color: var(--minortextColor) !important;
+        --erWSf-color: var(--minortextColor) !important;
         --ic-brand-font-color-dark-lightened-15: var(--minortextColor) !important;
         --ic-brand-font-color-dark-lightened-30: var(--textColor) !important;
         --MlJlv-textColor: var(--textColor) !important;
@@ -130,7 +135,7 @@
         --sJGfW-activeLabelColor: var(--iconColor) !important; /* may need to be CHNGED WATCH OUT */
         --sJGfW-activeIconColor: var(--buttonbackColor) !important;
         --dUOHu-brandColor: var(--minortextColor) !important; /* honestly no idea but the submit page on assignments is all weird cause of it for several stuff */
-        --ic-brand-primary: var(--minorsideColor); /* hover on grades page */
+        --ic-brand-primary: var(--iconColor); /* hover on grades page */
         --ic-brand-global-nav-menu-item__badge-text: var(--iconColor);
         --ic-brand-global-nav-ic-icon-svg-fill: var(--iconColor);
         --ic-brand-global-nav-menu-item__text-color: var(--iconColor);
@@ -169,6 +174,9 @@
     }
     select {
         color: var(--minortextColor) !important;
+    }
+    #content > div > div:nth-child(2) > div:nth-child(4) > span > div.fOyUs_bGBk > div > div:nth-child(2), #content > div > div:nth-child(2) > div:nth-child(4) > span > div.fOyUs_bGBk > div > div:nth-child(2) > div > span > span > div > span > div > div > span, #printQuizButton {
+        background-color: var(--secondarybackgroundColor) !important;
     }
     #immersive_reader_mount_point > div > button > span > span > span:nth-child(1) > span > svg > g > g > g > path:nth-child(1) {
         fill: var(--textColor);
