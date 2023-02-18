@@ -4,12 +4,16 @@
 # [Click HERE to install the script!](https://github.com/ExternalHost0/PimpMyCanvas/raw/master/PimpMyCanvas.user.js)
 
 Customize the appearance of Canvas LMS (Learning Management System) with ease. PMC (Pimp My Canvas) allows for custom colors to be assigned, overwriting the elements of Canvas as well as the ability to import palletes to be used in themes.
+
+There is now an official Chrome extension for this that my friend has made, you can find more about it
+**[HERE](https://github.com/JDipi/PimpMyCanvas)**!
 ___
 # Usage
 
 1. Click on the "Account" menu from anywhere in Canvas LMS.
 2. Require that the button "Show PMC Menu" is checked, should be on by default.
 3. All options should be available below. Specific features are explained in this readme below.
+
 ___
 # Requirements
 ### Requires Tampermonkey to be installed in your browser.

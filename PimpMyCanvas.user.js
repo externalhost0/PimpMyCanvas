@@ -181,6 +181,9 @@
     #immersive_reader_mount_point > div > button > span > span > span:nth-child(1) > span > svg > g > g > g > path:nth-child(1) {
         fill: var(--textColor);
     }
+    .quiz_score .score_value {
+        color: var(--minorsideColor)
+    }
     #breadcrumbs>ul>li+li:last-of-type a, .ig-header .name, .ig-list .ig-row, .item-group-condensed .ig-header, .faJyW_blJt, .ctrLD_bGBk, .question .header .question_points_holder, .pages.show .page-title{
         color: var(--textColor) !important;
     }
